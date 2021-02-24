@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class CreateSowController: UIViewController {
     var isSow: Bool = false {
@@ -124,23 +125,32 @@ class CreateSowController: UIViewController {
     }()
 
     @objc private func handleSave() {
+        checkForEmptyTextFields()
+        guard let name = sowNameTextField.textField.text else { return }
+
+        guard let parity = parityTextField.textField.text else { return }
+        print("parity is ......\(parity)")
+
+    }
+
+
+
+    func checkForEmptyTextFields() {
         var textFields = [MaterialInputView]()
         if !isSow {
-            textFields = [sowNameTextField, entryDateTextField]
+            textFields = [sowNameTextField]
         } else {
-        textFields = [sowNameTextField, entryDateTextField, parityTextField]
+        textFields = [sowNameTextField, parityTextField]
         }
         Validator.shared.validateTextFieldInput(textFields: textFields) { (bool) in
             if bool {
-                self.presentAlert()
+                self.presentAlert(title: "Error 101", message: "Invalid name. Please fill up the forms")
             }
         }
-
-        
     }
 
-    func presentAlert() {
-        let alertController = UIAlertController(title: "Error 101", message: "Invalid inputs. Please fill up the forms", preferredStyle: .alert)
+    func presentAlert(title:String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "Dismiss", style: .default, handler: nil)
         alertController.addAction(action)
         self.present(alertController, animated: true, completion: nil)
