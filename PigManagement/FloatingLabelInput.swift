@@ -13,7 +13,6 @@ class MaterialInputView: UIView {
 
     lazy var label: UILabel = {
         let lb = UILabel()
-        lb.backgroundColor = .red
         return lb
     }()
 
@@ -68,7 +67,7 @@ class MaterialInputView: UIView {
         UIView.transition(with: label, duration: 0.15, options: .curveEaseOut) {
             if isUp {
                 self.label.text = self.placeholder
-                self.label.font = UIFont.systemFont(ofSize: 16)
+                self.label.font =  Constants.floatingLabelFont
                 self.label.textColor = self.color
                 self.label.backgroundColor = .white
                 
