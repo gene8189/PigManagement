@@ -12,7 +12,7 @@ struct CoreDataManager {
     static let shared = CoreDataManager()
 
     let persistentContainer: NSPersistentContainer = {
-        let pc = NSPersistentContainer(name: "Sow")
+        let pc = NSPersistentContainer(name: "PigManagement")
         pc.loadPersistentStores { (storeDescription, error) in
             if let error = error {
                 print("Failed to load persistentContainer: ", error)
@@ -21,13 +21,13 @@ struct CoreDataManager {
         return pc
     }()
 
-    func createSow(name: String, entryDate: Date, parity: String) -> (Sow?, Error?) {
+    func createSow(name: String, entryDate: String?, parity: String?) -> (Sow?, Error?) {
         let context = persistentContainer.viewContext
         let sow = NSEntityDescription.insertNewObject(forEntityName: "Sow", into: context) as! Sow
-
         sow.name = name
         sow.parity = parity
         sow.entryDate = entryDate
+        context.insert(sow)
         do {
             try context.save()
             return (sow, nil)

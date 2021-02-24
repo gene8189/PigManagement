@@ -62,13 +62,13 @@ class CreateSowController: UIViewController {
 
     //MARK: - sowName Textfield
     lazy var sowNameTextField: MaterialInputView = {
-        let tfView = MaterialInputView(frame: .zero, placeholder: "Enter Name ", color: Constants.primaryColor)
+        let tfView = MaterialInputView(frame: .zero, placeholder: "Enter Name            ", color: Constants.primaryColor)
         return tfView
     }()
 
     //MARK: - Parity Textfield
     let entryDateTextField: MaterialInputView = {
-        let tfView = MaterialInputView(frame: .zero, placeholder: "Entry Date - e.g - dd/MM/yyyy", color: Constants.primaryColor)
+        let tfView = MaterialInputView(frame: .zero, placeholder: "Entry Date - e.g - dd.MM.yy", color: Constants.primaryColor)
         return tfView
     }()
 
@@ -126,25 +126,24 @@ class CreateSowController: UIViewController {
 
     @objc private func handleSave() {
         checkForEmptyTextFields()
-        guard let name = sowNameTextField.textField.text else { return }
 
-        guard let parity = parityTextField.textField.text else { return }
-        print("parity is ......\(parity)")
+        let date = entryDateTextField.textField.text
+        let parity = parityTextField.textField.text
+        if sowNameTextField.textField.text != "" {
+            guard let name = sowNameTextField.textField.text else { return }
+            let tuple = CoreDataManager.shared.createSow(name: name, entryDate: date , parity: parity)
+        }
+
 
     }
 
 
 
     func checkForEmptyTextFields() {
-        var textFields = [MaterialInputView]()
-        if !isSow {
-            textFields = [sowNameTextField]
-        } else {
-        textFields = [sowNameTextField, parityTextField]
-        }
+        let textFields = [sowNameTextField,entryDateTextField, parityTextField]
         Validator.shared.validateTextFieldInput(textFields: textFields) { (bool) in
             if bool {
-                self.presentAlert(title: "Error 101", message: "Invalid name. Please fill up the forms")
+                self.presentAlert(title: "Name is required!", message: "Please enter the name.")
             }
         }
     }

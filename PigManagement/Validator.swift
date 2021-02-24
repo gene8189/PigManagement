@@ -14,11 +14,16 @@ struct Validator {
     func validateTextFieldInput(textFields: [MaterialInputView], completion: @escaping (Bool)->()) {
         textFields.forEach { (materialInPutView) in
             guard let text = materialInPutView.textField.text else { return }
-            if text.isEmpty {
+            if materialInPutView == textFields[0] && text.isEmpty {
                 materialInPutView.line.backgroundColor = UIColor.red
-                materialInPutView.label.text = "Invalid input.  "
+                materialInPutView.label.text = "Name is required!"
                 materialInPutView.label.textColor = .red
                 completion(true)
+            } else if materialInPutView != textFields[0] && text.isEmpty {
+                materialInPutView.line.backgroundColor = UIColor.red
+                materialInPutView.label.text = "Invalid input."
+                materialInPutView.label.textColor = .orange
+                completion(false)
             }
         }
     }
