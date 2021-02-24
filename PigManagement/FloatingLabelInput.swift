@@ -13,6 +13,7 @@ class MaterialInputView: UIView {
 
     lazy var label: UILabel = {
         let lb = UILabel()
+        lb.numberOfLines = 0
         return lb
     }()
 
@@ -50,7 +51,7 @@ class MaterialInputView: UIView {
     }
 
     private func setup(placeholder: String) {
-        let labelWidth = placeholder.widthOfString(usingFont: Constants.labelFont)
+        let labelWidth = placeholder.widthOfString(usingFont: Constants.labelFont) + 20
         styleLabel(isUp: false)
         addSubview(textField)
         addSubview(label)
@@ -70,16 +71,18 @@ class MaterialInputView: UIView {
                 self.label.font =  Constants.floatingLabelFont
                 self.label.textColor = self.color
                 self.label.backgroundColor = .white
+                self.line.backgroundColor = Constants.primaryColor
                 
             } else {
 
                 self.label.textColor = self.color
                 self.label.text = self.placeholder
                 self.label.font = Constants.labelFont
+                self.line.backgroundColor = Constants.primaryColor
 
             }
-            }
         }
+    }
 
     private func moveLabel(isUp: Bool) {
         UIView.animate(withDuration: 0.15, delay: 0, options: .curveEaseOut) {

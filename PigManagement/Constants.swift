@@ -12,6 +12,8 @@ struct Constants {
     static let cellID = "cellID"
     static let textFieldFont = UIFont.systemFont(ofSize: 20)
     static let textFieldCornerRadius: CGFloat = 20
-    static let labelFont = UIFont.boldSystemFont(ofSize: 22)
+    static let labelFont = UIFont.boldSystemFont(ofSize: 20)
     static let floatingLabelFont = UIFont.systemFont(ofSize: 16)
+    static let buttonFont = UIFont.boldSystemFont(ofSize: 20)
+    static let buttonCornerRadius: CGFloat = 20
 }

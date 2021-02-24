@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B037C0F925E6567200826910 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037C0F825E6567200826910 /* CoreDataManager.swift */; };
+		B037C0FC25E656B800826910 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037C0FB25E656B800826910 /* Validator.swift */; };
 		B096F43625E5DDE500955319 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B096F43525E5DDE500955319 /* AppDelegate.swift */; };
 		B096F43825E5DDE500955319 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B096F43725E5DDE500955319 /* SceneDelegate.swift */; };
 		B096F43D25E5DDE500955319 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B096F43B25E5DDE500955319 /* Main.storyboard */; };
@@ -22,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B037C0F825E6567200826910 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		B037C0FB25E656B800826910 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		B096F43225E5DDE500955319 /* PigManagement.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PigManagement.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B096F43525E5DDE500955319 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B096F43725E5DDE500955319 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +77,8 @@
 				B096F45225E5E16B00955319 /* Extensions.swift */,
 				B096F44F25E5E0C800955319 /* SowsController.swift */,
 				B096F45825E5F05900955319 /* CreateSowController.swift */,
+				B037C0FB25E656B800826910 /* Validator.swift */,
+				B037C0F825E6567200826910 /* CoreDataManager.swift */,
 				B096F45E25E6308D00955319 /* Constants.swift */,
 				B096F45B25E5F63100955319 /* FloatingLabelInput.swift */,
 				B096F45525E5ED5600955319 /* SowCell.swift */,
@@ -160,9 +166,11 @@
 				B096F43625E5DDE500955319 /* AppDelegate.swift in Sources */,
 				B096F43825E5DDE500955319 /* SceneDelegate.swift in Sources */,
 				B096F45925E5F05900955319 /* CreateSowController.swift in Sources */,
+				B037C0FC25E656B800826910 /* Validator.swift in Sources */,
 				B096F44025E5DDE500955319 /* PigManagement.xcdatamodeld in Sources */,
 				B096F45025E5E0C800955319 /* SowsController.swift in Sources */,
 				B096F45C25E5F63200955319 /* FloatingLabelInput.swift in Sources */,
+				B037C0F925E6567200826910 /* CoreDataManager.swift in Sources */,
 				B096F45F25E6308D00955319 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

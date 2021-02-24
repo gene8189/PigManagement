@@ -26,8 +26,9 @@ class SowsController: UITableViewController {
     }
 
     @objc private func handleAdd() {
-        let navController = CustomNavigationController(rootViewController: CreateSowController())
-        present(navController, animated: true, completion: nil)
+        let createSowController = CreateSowController()
+        createSowController.modalPresentationStyle = .fullScreen
+        self.present(createSowController, animated: true, completion: nil)
 
     }
 
