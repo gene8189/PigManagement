@@ -8,11 +8,17 @@
 import UIKit
 
 class SowsController: UITableViewController {
-    
+    var sows = [Sow]()
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavBar()
         setupTableView()
+        fetchSows()
+    }
+
+    func fetchSows() {
+        sows = CoreDataManager.shared.performSowFetch()
+        tableView.reloadData()
     }
 
     func setupTableView() {
@@ -28,6 +34,7 @@ class SowsController: UITableViewController {
     @objc private func handleAdd() {
         let createSowController = CreateSowController()
         createSowController.modalPresentationStyle = .fullScreen
+        createSowController.delegate = self
         self.present(createSowController, animated: true, completion: nil)
 
     }
@@ -38,11 +45,20 @@ class SowsController: UITableViewController {
 extension SowsController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellID, for: indexPath) as! SowCell
+        let sow = sows[indexPath.row]
+        cell.textLabel?.text = sow.name
         return cell
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return sows.count
+    }
+}
+
+extension SowsController: CreateSowControllerDelegate {
+    func didAddSow(sow: Sow) {
+        sows.append(sow)
+        tableView.reloadData()
     }
 }
 

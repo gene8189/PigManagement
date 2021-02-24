@@ -36,4 +36,16 @@ struct CoreDataManager {
             return (nil, error)
         }
     }
+
+    func performSowFetch() -> [Sow] {
+        let context = persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<Sow> = Sow.fetchRequest()
+        do {
+            let sows = try context.fetch(fetchRequest)
+            return sows
+        } catch let sowFetchErrors {
+            print("Failed to fetch sows: ",sowFetchErrors)
+            return []
+        }
+    }
 }

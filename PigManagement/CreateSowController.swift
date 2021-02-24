@@ -8,12 +8,19 @@
 import UIKit
 import CoreData
 
+
+protocol CreateSowControllerDelegate {
+    func didAddSow(sow: Sow)
+}
+
 class CreateSowController: UIViewController {
     var isSow: Bool = false {
         didSet {
                 parityTextField.isHidden = !isSow
         }
     }
+    var delegate: CreateSowControllerDelegate?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -132,9 +139,14 @@ class CreateSowController: UIViewController {
         if sowNameTextField.textField.text != "" {
             guard let name = sowNameTextField.textField.text else { return }
             let tuple = CoreDataManager.shared.createSow(name: name, entryDate: date , parity: parity)
+            if tuple.1 != nil {
+                print(tuple.1!)
+            }
+            dismiss(animated: true) {
+                guard let sow = tuple.0 else { return }
+                self.delegate?.didAddSow(sow: sow)
+            }
         }
-
-
     }
 
 
