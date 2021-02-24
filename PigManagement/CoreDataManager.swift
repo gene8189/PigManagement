@@ -48,4 +48,14 @@ struct CoreDataManager {
             return []
         }
     }
+
+    func deleteSow(sow:Sow) {
+        let context = persistentContainer.viewContext
+        context.delete(sow)
+        do {
+            try context.save()
+        } catch let deleteError {
+            print("Failed to delete sow: ", deleteError)
+        }
+    }
 }

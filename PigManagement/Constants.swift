@@ -16,4 +16,6 @@ struct Constants {
     static let floatingLabelFont = UIFont.systemFont(ofSize: 16)
     static let buttonFont = UIFont.boldSystemFont(ofSize: 20)
     static let buttonCornerRadius: CGFloat = 20
+    static let cellCornerRadius: CGFloat = 25
+    static let sowCellBackgroundColor: UIColor = UIColor(hexString: "E5CE90")
 }

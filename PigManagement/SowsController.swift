@@ -53,6 +53,21 @@ extension SowsController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sows.count
     }
+
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteItem = remove(indexPath: indexPath)
+        return UISwipeActionsConfiguration(actions: [deleteItem])
+    }
+
+    func remove(indexPath: IndexPath) -> UIContextualAction {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completion) in
+            let sow = self.sows[indexPath.row]
+            self.sows.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            CoreDataManager.shared.deleteSow(sow: sow)
+        }
+        return deleteAction
+    }
 }
 
 extension SowsController: CreateSowControllerDelegate {
