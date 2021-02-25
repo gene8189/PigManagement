@@ -8,7 +8,7 @@
 
 enum Stages: String, CaseIterable {
     case open
-    case gestatating
+    case gestating
     case lactating
     case culling
 }
@@ -29,7 +29,7 @@ class SowCell: UITableViewCell {
         guard let stage = Stages(rawValue: sowStage) else { return }
         switch stage {
         case .open: circle.backgroundColor = .red
-        case .gestatating: circle.backgroundColor = .green
+        case .gestating: circle.backgroundColor = .green
         case .lactating: circle.backgroundColor = .orange
         case .culling: circle.backgroundColor = .purple
         }
