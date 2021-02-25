@@ -23,10 +23,8 @@ class CreateSowController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.backgroundColor = .white
         setupUI()
-
+        view.backgroundColor = .clear
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -40,11 +38,15 @@ class CreateSowController: UIViewController {
     func setupUI() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTapDismissKeyboard))
         view.addGestureRecognizer(tap)
+
+        view.addSubview(blurVisualEffectView)
+        blurVisualEffectView.fillSuperView()
+        blurVisualEffectView.alpha = 1
         view.addSubview(containerView)
         containerView.addSubview(sowNameTextField)
         containerView.addSubview(entryDateTextField)
         containerView.addSubview(segmentControl)
-        containerView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 30, left: 0, bottom: 0, right: 0))
+        containerView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 100, left: 0, bottom: 0, right: 0))
         containerView.constraintHeight(constant: 500)
         sowNameTextField.anchor(top: containerView.topAnchor, leading: containerView.leadingAnchor, bottom: nil, trailing: containerView.trailingAnchor, padding: .init(top: 70, left: 20, bottom: 0, right: 10), size: .init(width: 0, height: 50))
 //
@@ -59,13 +61,18 @@ class CreateSowController: UIViewController {
         containerView.addSubview(dismissButton)
         saveButton.anchor(top: nil, leading: containerView.leadingAnchor, bottom: dismissButton.topAnchor, trailing: containerView.trailingAnchor, padding: .init(top: 0, left: 20, bottom: 20, right: 20), size: .init(width: 0, height: 50))
         dismissButton.anchor(top: nil, leading: containerView.leadingAnchor, bottom: containerView.bottomAnchor, trailing: containerView.trailingAnchor, padding: .init(top: 0, left: 20, bottom: 20, right: 20), size: .init(width: 0, height: 50))
-
+        sowNameTextField.textField.becomeFirstResponder()
     }
 
     let containerView: UIView = {
         let view = UIView()
+        view.backgroundColor = .white
+        view.layer.masksToBounds = true
+        view.layer.cornerRadius = 10
         return view
     }()
+
+    let blurVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
 
     //MARK: - sowName Textfield
     lazy var sowNameTextField: MaterialInputView = {
@@ -147,6 +154,7 @@ class CreateSowController: UIViewController {
             }
             dismiss(animated: true) {
                 guard let sow = tuple.0 else { return }
+                
                 self.delegate?.didAddSow(sow: sow)
             }
         }

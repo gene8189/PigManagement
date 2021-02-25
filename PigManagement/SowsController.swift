@@ -28,13 +28,15 @@ class SowsController: UITableViewController {
     }
 
     func setupNavBar() {
+       
         configureNavigationBar(preferredLargeSize: true, title: "Sow Inventory", titleColor: .white, tintColor: .white, backgroundColor: Constants.primaryColor)
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(handleAdd))
     }
 
     @objc private func handleAdd() {
         let createSowController = CreateSowController()
-        createSowController.modalPresentationStyle = .fullScreen
+        createSowController.modalPresentationStyle = .overCurrentContext
+
         createSowController.delegate = self
         self.present(createSowController, animated: true, completion: nil)
 

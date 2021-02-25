@@ -21,12 +21,19 @@ struct CoreDataManager {
         return pc
     }()
 
+
+    // create sow also automatically create service and default is open.
     func createSow(name: String, entryDate: String?, parity: String?) -> (Sow?, Error?) {
         let context = persistentContainer.viewContext
         let sow = NSEntityDescription.insertNewObject(forEntityName: "Sow", into: context) as! Sow
+        let phase = NSEntityDescription.insertNewObject(forEntityName: "Phase", into: context) as! Phase
         sow.name = name
         sow.parity = parity
         sow.entryDate = entryDate
+
+        phase.stage = "open"
+        sow.phase = phase
+
         context.insert(sow)
         do {
             try context.save()
@@ -36,6 +43,8 @@ struct CoreDataManager {
             return (nil, error)
         }
     }
+
+//    func createService(
 
     func performSowFetch() -> [Sow] {
         let context = persistentContainer.viewContext

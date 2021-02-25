@@ -9,6 +9,7 @@ import UIKit
 
 struct Constants {
     static let primaryColor = UIColor(hexString: "D2AA3B")
+    static let tertiaryColor = UIColor(hexString: "e5ce90")
     static let cellID = "cellID"
     static let textFieldFont = UIFont.systemFont(ofSize: 20)
     static let textFieldCornerRadius: CGFloat = 20
