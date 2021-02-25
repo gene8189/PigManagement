@@ -6,7 +6,7 @@
 //
 
 
-enum Stages: String {
+enum Stages: String, CaseIterable {
     case open
     case gestatating
     case lactating
@@ -23,6 +23,10 @@ class SowCell: UITableViewCell {
             guard  let phase = sow.phase else { return }
             var stage = Stages.open
             if let sowStage = phase.stage {
+                if stage.rawValue == sowStage {
+                    setCircleColor(for: stage)
+                }
+
                 if sowStage == "open" {
                     stage = .open
                 } else if sowStage == "gestating" {
@@ -33,7 +37,7 @@ class SowCell: UITableViewCell {
                     stage = .culling
                 }
             }
-            setCircleColor(for: stage)
+
         }
     }
 
