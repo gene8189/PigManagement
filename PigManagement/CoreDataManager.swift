@@ -31,7 +31,7 @@ struct CoreDataManager {
         sow.parity = parity
         sow.entryDate = entryDate
 
-        phase.stage = "open"
+        phase.stage = "culling"
         sow.phase = phase
 
         context.insert(sow)

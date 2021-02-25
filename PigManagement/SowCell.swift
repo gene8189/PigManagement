@@ -20,9 +20,34 @@ class SowCell: UITableViewCell {
         didSet {
             guard let sow = sow else { return }
             nameLabel.text = sow.name
-            
+            guard  let phase = sow.phase else { return }
+            var stage = Stages.open
+            if let sowStage = phase.stage {
+                if sowStage == "open" {
+                    stage = .open
+                } else if sowStage == "gestating" {
+                    stage = .gestatating
+                } else if sowStage == "lactating" {
+                    stage = .lactating
+                } else {
+                    stage = .culling
+                }
+            }
+            setCircleColor(for: stage)
         }
     }
+
+    func setCircleColor(for stage: Stages) {
+        switch stage {
+        case .open: circle.backgroundColor = .red
+        case .gestatating: circle.backgroundColor = .green
+        case .lactating: circle.backgroundColor = .orange
+        case .culling: circle.backgroundColor = .purple
+        }
+    }
+
+
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addSubview(underLine)
@@ -59,7 +84,7 @@ class SowCell: UITableViewCell {
         lb.layer.masksToBounds = true
         lb.layer.cornerRadius = 15
         lb.layer.borderWidth = 1
-        lb.layer.borderColor = UIColor.black.cgColor
+        lb.layer.borderColor = Constants.primaryColor.cgColor
         return lb
     }()
 
