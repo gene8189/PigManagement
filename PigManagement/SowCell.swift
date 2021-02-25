@@ -20,28 +20,13 @@ class SowCell: UITableViewCell {
         didSet {
             guard let sow = sow else { return }
             nameLabel.text = sow.name
-            guard  let phase = sow.phase else { return }
-            var stage = Stages.open
-            if let sowStage = phase.stage {
-                if stage.rawValue == sowStage {
-                    setCircleColor(for: stage)
-                }
-
-                if sowStage == "open" {
-                    stage = .open
-                } else if sowStage == "gestating" {
-                    stage = .gestatating
-                } else if sowStage == "lactating" {
-                    stage = .lactating
-                } else {
-                    stage = .culling
-                }
-            }
-
+            checkStages(of: sow)
         }
     }
 
-    func setCircleColor(for stage: Stages) {
+    func checkStages(of sow: Sow) {
+        guard let sowStage = sow.phase?.stage else { return }
+        guard let stage = Stages(rawValue: sowStage) else { return }
         switch stage {
         case .open: circle.backgroundColor = .red
         case .gestatating: circle.backgroundColor = .green
