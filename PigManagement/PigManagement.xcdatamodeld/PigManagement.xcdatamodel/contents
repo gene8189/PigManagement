@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20D75" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Service" representedClassName="Service" syncable="YES" codeGenerationType="class">
+        <attribute name="serviceDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="stage" optional="YES" attributeType="String"/>
+    </entity>
     <entity name="Sow" representedClassName="Sow" syncable="YES" codeGenerationType="class">
         <attribute name="entryDate" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
@@ -7,5 +11,6 @@
     </entity>
     <elements>
         <element name="Sow" positionX="219.083984375" positionY="315.0391540527344" width="128" height="74"/>
+        <element name="Service" positionX="216" positionY="342" width="128" height="59"/>
     </elements>
 </model>

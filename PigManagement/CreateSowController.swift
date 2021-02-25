@@ -135,7 +135,10 @@ class CreateSowController: UIViewController {
         checkForEmptyTextFields()
 
         let date = entryDateTextField.textField.text
-        let parity = parityTextField.textField.text
+        var parity = parityTextField.textField.text
+        if !isSow {
+            parity = "Gilt"
+        }
         if sowNameTextField.textField.text != "" {
             guard let name = sowNameTextField.textField.text else { return }
             let tuple = CoreDataManager.shared.createSow(name: name, entryDate: date , parity: parity)

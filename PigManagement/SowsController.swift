@@ -23,6 +23,7 @@ class SowsController: UITableViewController {
 
     func setupTableView() {
         tableView.register(SowCell.self, forCellReuseIdentifier: Constants.cellID)
+        tableView.backgroundColor = .black
         
     }
 
@@ -46,7 +47,7 @@ extension SowsController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellID, for: indexPath) as! SowCell
         let sow = sows[indexPath.row]
-        cell.textLabel?.text = sow.name
+        cell.sow = sow
         return cell
     }
 
@@ -54,6 +55,10 @@ extension SowsController {
         return sows.count
     }
 
+
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteItem = remove(indexPath: indexPath)
         return UISwipeActionsConfiguration(actions: [deleteItem])
