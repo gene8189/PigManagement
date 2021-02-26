@@ -10,7 +10,7 @@ enum Stages: String, CaseIterable {
     case open
     case gestating
     case lactating
-    case culling
+    case weaned
 }
 
 import UIKit
@@ -31,7 +31,7 @@ class SowCell: UITableViewCell {
         case .open: circle.backgroundColor = .red
         case .gestating: circle.backgroundColor = .green
         case .lactating: circle.backgroundColor = .orange
-        case .culling: circle.backgroundColor = .purple
+        case .weaned: circle.backgroundColor = .purple
         }
     }
 
@@ -40,6 +40,7 @@ class SowCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addSubview(underLine)
+        backgroundColor = Constants.sowCellBackgroundColor
         underLine.anchor(top: bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 0, left: 20, bottom: 0, right: 20), size: .init(width: 0, height: 2))
         addSubview(nameLabel)
         addSubview(circle)
@@ -58,6 +59,7 @@ class SowCell: UITableViewCell {
     let nameLabel: UILabel = {
         let label = UILabel()
         label.font = Constants.labelFont
+        label.textColor = .black
         return label
     }()
 
@@ -69,11 +71,8 @@ class SowCell: UITableViewCell {
 
     let circle : UILabel = {
         let lb = UILabel()
-//        lb.backgroundColor = .green
         lb.layer.masksToBounds = true
         lb.layer.cornerRadius = 15
-        lb.layer.borderWidth = 1
-        lb.layer.borderColor = Constants.primaryColor.cgColor
         return lb
     }()
 

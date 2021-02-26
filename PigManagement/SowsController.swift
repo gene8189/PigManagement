@@ -52,7 +52,6 @@ class SowsController: UITableViewController {
 
     func setupTableView() {
         tableView.register(SowCell.self, forCellReuseIdentifier: Constants.cellID)
-        tableView.backgroundColor = .black
         
     }
 
@@ -76,12 +75,20 @@ class SowsController: UITableViewController {
 extension SowsController {
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let gradientView = UIColor.createGradientForHeaderView(view: .init(x: 0, y: 0, width: tableView.frame.height, height: 50))
+
         let label = IndentedLabel()
-        label.backgroundColor = .gray
+        gradientView.addSubview(label)
+        label.anchor(top: gradientView.topAnchor, leading: gradientView.leadingAnchor, bottom: gradientView.bottomAnchor, trailing: gradientView.trailingAnchor)
+        label.backgroundColor = .clear
         label.text = allBatches[section].name
         label.font = Constants.labelFont
-        return label
+        label.textColor = .white
+        return gradientView
         }
+
+
+    
 
     @objc func handleTap(gesture: UITapGestureRecognizer) {
         print("TAP TAP ...later get indexpath")

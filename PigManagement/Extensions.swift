@@ -25,6 +25,7 @@ extension UIViewController {
 
 
 extension UIColor {
+    static let darkBlue = UIColor(red: 9/255, green: 45/255, blue: 64/255, alpha: 1)
     convenience init(hexString: String) {
         let hex = hexString.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         var int = UInt64()
@@ -41,6 +42,17 @@ extension UIColor {
             (a, r, g, b) = (255, 0, 0, 0)
         }
         self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
+    }
+
+    static func createGradientForHeaderView(view frame: CGRect = .zero) -> UIView {
+        let view = UIView(frame: frame)
+        let gradient = CAGradientLayer()
+        gradient.frame = view.frame
+        gradient.colors = Constants.colorArray
+        gradient.startPoint = CGPoint(x: 0.5, y: 1)
+        gradient.endPoint = CGPoint(x: 0.5, y: 0)
+        view.layer.insertSublayer(gradient, at: 0)
+        return view
     }
 }
 

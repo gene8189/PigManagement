@@ -29,6 +29,7 @@ class MaterialInputView: UIView {
         tf.autocapitalizationType = .none
         tf.autocorrectionType = .no
         tf.layer.cornerRadius = Constants.textFieldCornerRadius
+        tf.textColor = .white
         return tf
     }()
 
