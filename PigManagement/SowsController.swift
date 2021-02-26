@@ -8,29 +8,39 @@
 import UIKit
 
 struct ExpandableCell {
-    var isExapanded: Bool
-    var names: String
-    var sows = [Sow]()
+    var name: String
+    var sows: [Sow]
 }
 
 
 
 class SowsController: UITableViewController {
-
-    var twoDimensionalArray = [ExpandableCell]()
+    var allBatches = [ExpandableCell]()
+    var sows = [Sow]()
     var totalArray = [[Int]]()
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavBar()
         setupTableView()
-//        fetchSows()
-        print(Date().calculateTotalWeekAndCreateBatches(Date()))
+        fetchSows()
+        createBatches()
+    }
+
+    func createBatches() {
+        let numberOfBatches = Date().calculateTotalWeekAndCreateBatches(Date())
+        let batches = numberOfBatches.map { ExpandableCell(name:String($0), sows: []) }
+        allBatches = batches
+        allBatches.indices.forEach { (batch) in
+            allBatches[batch].sows.append(contentsOf: sows.filter { (sow) -> Bool in
+                sow.name == allBatches[batch].name
+            })
+        }
     }
 
 
 
     func fetchSows() {
-//        sows = CoreDataManager.shared.performSowFetch()
+        sows = CoreDataManager.shared.performSowFetch()
         tableView.reloadData()
     }
 
@@ -60,18 +70,8 @@ class SowsController: UITableViewController {
 extension SowsController {
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        // Make 54 sets. 52 batches for dividing total sows and one extra to contain those open sows and one extra to be caution
-        // make indented label for headerview.
-        let totalWeek: [Int] = Date().calculateTotalWeekAndCreateBatches(Date())
-        twoDimensionalArray = totalWeek.map { ExpandableCell(isExapanded: false, names: String($0))}
-        let labelTitle = twoDimensionalArray[section].names
         let label = UILabel()
-        label.text = labelTitle
-        label.backgroundColor = .lightGray
-        label.isUserInteractionEnabled = true
-        label.textAlignment = .left
-        label.layer.borderWidth = 1
-        label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
+        label.text = allBatches[section].name
         return label
         }
 
@@ -92,12 +92,14 @@ extension SowsController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return allBatches[section].sows.count
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return Date().calculateTotalWeekAndCreateBatches(Date()).count
+        return allBatches.count
     }
+
+    header
 
 
 

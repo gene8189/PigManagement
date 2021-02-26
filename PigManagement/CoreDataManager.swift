@@ -26,16 +26,15 @@ struct CoreDataManager {
     func createSow(name: String, entryDate: String?, parity: String?) -> (Sow?, Error?) {
         let context = persistentContainer.viewContext
         let sow = NSEntityDescription.insertNewObject(forEntityName: "Sow", into: context) as! Sow
-        let batch = NSEntityDescription.insertNewObject(forEntityName: "Batch", into: context) as! Batch
         sow.name = name
         sow.parity = parity
         sow.entryDate = entryDate
 
         // Set default stage of sow to open when created.
         // Set batch number to 0 when first created sow.
-        batch.batchNumber = 0
+
         sow.stage = "open"
-        sow.batch = batch
+        sow.batch = "0"
         context.insert(sow)
         do {
             try context.save()
