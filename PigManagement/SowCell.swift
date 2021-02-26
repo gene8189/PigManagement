@@ -25,7 +25,7 @@ class SowCell: UITableViewCell {
     }
 
     func checkStages(of sow: Sow) {
-        guard let sowStage = sow.phase?.stage else { return }
+        guard let sowStage = sow.stage else { return }
         guard let stage = Stages(rawValue: sowStage) else { return }
         switch stage {
         case .open: circle.backgroundColor = .red

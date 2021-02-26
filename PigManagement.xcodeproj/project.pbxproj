@@ -21,6 +21,7 @@
 		B096F45925E5F05900955319 /* CreateSowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B096F45825E5F05900955319 /* CreateSowController.swift */; };
 		B096F45C25E5F63200955319 /* FloatingLabelInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B096F45B25E5F63100955319 /* FloatingLabelInput.swift */; };
 		B096F45F25E6308D00955319 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B096F45E25E6308D00955319 /* Constants.swift */; };
+		B0CE176725E7E5F700271D0D /* DayCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CE176625E7E5F700271D0D /* DayCalculator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		B096F45825E5F05900955319 /* CreateSowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSowController.swift; sourceTree = "<group>"; };
 		B096F45B25E5F63100955319 /* FloatingLabelInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingLabelInput.swift; sourceTree = "<group>"; };
 		B096F45E25E6308D00955319 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B0CE176625E7E5F700271D0D /* DayCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCalculator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 				B096F43725E5DDE500955319 /* SceneDelegate.swift */,
 				B096F45225E5E16B00955319 /* Extensions.swift */,
 				B096F44F25E5E0C800955319 /* SowsController.swift */,
+				B0CE176625E7E5F700271D0D /* DayCalculator.swift */,
 				B096F45525E5ED5600955319 /* SowCell.swift */,
 				B096F45825E5F05900955319 /* CreateSowController.swift */,
 				B037C0FB25E656B800826910 /* Validator.swift */,
@@ -163,6 +166,7 @@
 			files = (
 				B096F45325E5E16B00955319 /* Extensions.swift in Sources */,
 				B096F45625E5ED5600955319 /* SowCell.swift in Sources */,
+				B0CE176725E7E5F700271D0D /* DayCalculator.swift in Sources */,
 				B096F43625E5DDE500955319 /* AppDelegate.swift in Sources */,
 				B096F43825E5DDE500955319 /* SceneDelegate.swift in Sources */,
 				B096F45925E5F05900955319 /* CreateSowController.swift in Sources */,

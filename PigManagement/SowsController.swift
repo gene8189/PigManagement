@@ -7,17 +7,30 @@
 
 import UIKit
 
-class SowsController: UITableViewController {
+struct ExpandableCell {
+    var isExapanded: Bool
+    var names: String
     var sows = [Sow]()
+}
+
+
+
+class SowsController: UITableViewController {
+
+    var twoDimensionalArray = [ExpandableCell]()
+    var totalArray = [[Int]]()
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavBar()
         setupTableView()
-        fetchSows()
+//        fetchSows()
+        print(Date().calculateTotalWeekAndCreateBatches(Date()))
     }
 
+
+
     func fetchSows() {
-        sows = CoreDataManager.shared.performSowFetch()
+//        sows = CoreDataManager.shared.performSowFetch()
         tableView.reloadData()
     }
 
@@ -39,23 +52,54 @@ class SowsController: UITableViewController {
 
         createSowController.delegate = self
         self.present(createSowController, animated: true, completion: nil)
-
     }
 
 }
 
 
 extension SowsController {
+
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        // Make 54 sets. 52 batches for dividing total sows and one extra to contain those open sows and one extra to be caution
+        // make indented label for headerview.
+        let totalWeek: [Int] = Date().calculateTotalWeekAndCreateBatches(Date())
+        twoDimensionalArray = totalWeek.map { ExpandableCell(isExapanded: false, names: String($0))}
+        let labelTitle = twoDimensionalArray[section].names
+        let label = UILabel()
+        label.text = labelTitle
+        label.backgroundColor = .lightGray
+        label.isUserInteractionEnabled = true
+        label.textAlignment = .left
+        label.layer.borderWidth = 1
+        label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
+        return label
+        }
+
+    @objc func handleTap(gesture: UITapGestureRecognizer) {
+        print("TAP TAP ...later get indexpath")
+
+    }
+
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
+    }
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellID, for: indexPath) as! SowCell
-        let sow = sows[indexPath.row]
-        cell.sow = sow
+//        let sow = sows[indexPath.row]
+//        cell.sow = sow
         return cell
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sows.count
+        return 0
     }
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return Date().calculateTotalWeekAndCreateBatches(Date()).count
+    }
+
+
 
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -68,10 +112,10 @@ extension SowsController {
 
     func remove(indexPath: IndexPath) -> UIContextualAction {
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completion) in
-            let sow = self.sows[indexPath.row]
-            self.sows.remove(at: indexPath.row)
+//            let sow = self.sows[indexPath.row]
+//            self.sows.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
-            CoreDataManager.shared.deleteSow(sow: sow)
+//            CoreDataManager.shared.deleteSow(sow: sow)
         }
         return deleteAction
     }
@@ -79,7 +123,7 @@ extension SowsController {
 
 extension SowsController: CreateSowControllerDelegate {
     func didAddSow(sow: Sow) {
-        sows.append(sow)
+//        sows.append(sow)
         tableView.reloadData()
     }
 }
