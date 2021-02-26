@@ -9,7 +9,7 @@ import UIKit
 
 struct ExpandableCell {
     var name: String
-    var sows: [Sow]
+    var sows =  [Sow]()
 }
 
 
@@ -23,24 +23,30 @@ class SowsController: UITableViewController {
         setupNavBar()
         setupTableView()
         fetchSows()
-        createBatches()
+
     }
 
     func createBatches() {
         let numberOfBatches = Date().calculateTotalWeekAndCreateBatches(Date())
         let batches = numberOfBatches.map { ExpandableCell(name:String($0), sows: []) }
         allBatches = batches
-        allBatches.indices.forEach { (batch) in
-            allBatches[batch].sows.append(contentsOf: sows.filter { (sow) -> Bool in
-                sow.name == allBatches[batch].name
-            })
+    }
+
+    func addSow(sow: Sow) {
+        allBatches.indices.forEach {
+            if allBatches[$0].name == sow.batch {
+                allBatches[$0].sows.append(sow)
+            }
         }
     }
 
 
-
     func fetchSows() {
         sows = CoreDataManager.shared.performSowFetch()
+        createBatches()
+        sows.forEach { (sow) in
+            addSow(sow: sow)
+        }
         tableView.reloadData()
     }
 
@@ -70,8 +76,10 @@ class SowsController: UITableViewController {
 extension SowsController {
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let label = UILabel()
+        let label = IndentedLabel()
+        label.backgroundColor = .gray
         label.text = allBatches[section].name
+        label.font = Constants.labelFont
         return label
         }
 
@@ -86,8 +94,8 @@ extension SowsController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellID, for: indexPath) as! SowCell
-//        let sow = sows[indexPath.row]
-//        cell.sow = sow
+        let sow = allBatches[indexPath.section].sows[indexPath.row]
+        cell.sow = sow
         return cell
     }
 
@@ -99,7 +107,6 @@ extension SowsController {
         return allBatches.count
     }
 
-    header
 
 
 
@@ -125,7 +132,7 @@ extension SowsController {
 
 extension SowsController: CreateSowControllerDelegate {
     func didAddSow(sow: Sow) {
-//        sows.append(sow)
+        addSow(sow: sow)
         tableView.reloadData()
     }
 }

@@ -34,7 +34,7 @@ struct CoreDataManager {
         // Set batch number to 0 when first created sow.
 
         sow.stage = "open"
-        sow.batch = "0"
+        sow.batch = "1"
         context.insert(sow)
         do {
             try context.save()
