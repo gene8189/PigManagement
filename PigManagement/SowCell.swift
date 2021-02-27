@@ -23,10 +23,13 @@ class SowCell: UITableViewCell {
         guard let sowStage = sow.stage else { return }
         guard let stage = Stages(rawValue: sowStage) else { return }
         switch stage {
-        case .open: circle.backgroundColor = .red
-        case .gestating: circle.backgroundColor = .green
-        case .lactating: circle.backgroundColor = .orange
-        case .weaned: circle.backgroundColor = .purple
+        case .open: circle.backgroundColor = Constants.openColor
+        case .gestating: circle.backgroundColor = Constants.gestatingColor
+        case .lactating: circle.backgroundColor = Constants.lactatingColor
+        case .others: circle.backgroundColor = Constants.othersColor
+        case .gilt: break
+        case .weaned: break
+            
 
         }
     }

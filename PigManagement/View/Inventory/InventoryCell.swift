@@ -7,7 +7,7 @@
 
 import UIKit
 
-class InventoryCell: UICollectionViewCell {
+class InventoryCell: BaseCell {
 
     var category: Categories! {
         didSet {
@@ -16,6 +16,7 @@ class InventoryCell: UICollectionViewCell {
             titleLabel.textColor = category.color
             numberLabel.text = category.number
             percentageLabel.text = category.percentage
+            circle.trackClr = category.color
 
         }
     }
@@ -26,15 +27,17 @@ class InventoryCell: UICollectionViewCell {
         addSubview(titleLabel)
         addSubview(numberLabel)
         addSubview(percentageLabel)
-        addSubview(underLine)
+        addSubview(circle)
         addSubview(arrowImageView)
         categoryColorView.anchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: nil, padding: .init(top: 7, left: 10, bottom: 7, right: 0), size: .init(width: 10, height: 0))
         titleLabel.anchor(top: topAnchor, leading: categoryColorView.trailingAnchor, bottom: nil, trailing: nil, padding: .init(top: 7, left: 20, bottom: 0, right: 0), size: .init(width: 100, height: 20))
-        numberLabel.anchor(top: titleLabel.bottomAnchor, leading: categoryColorView.trailingAnchor, bottom: categoryColorView.bottomAnchor, trailing: nil, padding: .init(top: 0, left: 20 , bottom: 0 , right: 0), size: .init(width: 0, height: 0))
-        percentageLabel.anchor(top: nil, leading: numberLabel.trailingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 0, left: 20, bottom: 0, right: 20), size: .init(width: 100, height: 50))
+        numberLabel.anchor(top: titleLabel.bottomAnchor, leading: categoryColorView.trailingAnchor, bottom: categoryColorView.bottomAnchor, trailing: circle.leadingAnchor, padding: .init(top: 0, left: 20 , bottom: 0 , right: 10))
+        circle.anchor(top: nil, leading: numberLabel.trailingAnchor, bottom: nil, trailing: percentageLabel.leadingAnchor, padding: .init(top: 0, left: 10, bottom: 0, right: 10), size: .init(width: 100, height: 100))
+        circle.centerYInSuperview()
+        percentageLabel.anchor(top: nil, leading: circle.trailingAnchor, bottom: nil, trailing: arrowImageView.leadingAnchor, padding: .init(top: 0, left: 10, bottom: 0, right: 20), size: .init(width: 70, height: 50))
         percentageLabel.centerYInSuperview()
-        underLine.anchor(top: bottomAnchor, leading: categoryColorView.leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 2, left: 0, bottom: 0, right: 0), size: .init(width: 0, height: 2))
-        arrowImageView.anchor(top: nil, leading: percentageLabel.trailingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 0, left: 5, bottom: 0, right: 10), size: .init(width: 64, height: 64))
+
+        arrowImageView.anchor(top: nil, leading: percentageLabel.trailingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 0, left: 20, bottom: 0, right: 10), size: .init(width: 40, height: 40))
         arrowImageView.centerYInSuperview()
 
     }
@@ -46,18 +49,13 @@ class InventoryCell: UICollectionViewCell {
     let arrowImageView: UIImageView = {
         let imageView = UIImageView(image: #imageLiteral(resourceName: "right-arrow"))
         imageView.contentMode = .scaleAspectFill
+        imageView.tintColor = Constants.grayColor
         return imageView
     }()
 
 
     let categoryColorView: UIView = {
         let view = UIView()
-        return view
-    }()
-
-    let underLine: UIView = {
-        let view = UIView()
-        view.backgroundColor = .lightGray
         return view
     }()
 
@@ -81,5 +79,12 @@ class InventoryCell: UICollectionViewCell {
         label.textAlignment = .center
         return label
     }()
+
+
+    let circle: CircleProgress = {
+        let circleProgress = CircleProgress(frame: .init(x: 0, y: 0, width: 100, height: 100))
+        return circleProgress
+    }()
+
 
 }

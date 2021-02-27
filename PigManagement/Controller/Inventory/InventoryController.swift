@@ -11,7 +11,9 @@ enum Stages: String, CaseIterable {
     case open
     case gestating
     case lactating
+    case others
     case weaned
+    case gilt
 
 }
 
@@ -19,7 +21,9 @@ enum Stages: String, CaseIterable {
 class InventoryController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     init() {
-        super.init(collectionViewLayout: UICollectionViewFlowLayout())
+        let layout = UICollectionViewFlowLayout()
+            layout.sectionHeadersPinToVisibleBounds = true
+            super.init(collectionViewLayout: layout)
     }
 
     required init?(coder: NSCoder) {
@@ -27,17 +31,21 @@ class InventoryController: UICollectionViewController, UICollectionViewDelegateF
     }
 
     var categories: [Categories] = [
-        Categories(title: "Gestating", number: "525", percentage: "80%", color: .green),
-        Categories(title: "Lactating", number: "183", percentage: "15%", color: .orange),
-        Categories(title: "Open", number: "10", percentage: "3%", color: .red),
-        Categories(title: "Others", number: "5", percentage: "2%", color: .purple)]
+        Categories(title: "Gestating", number: "525", percentage: "80%", color: Constants.gestatingColor),
+        Categories(title: "Lactating", number: "183", percentage: "12%", color: Constants.lactatingColor),
+        Categories(title: "Weaned", number: "30", percentage: "4", color: Constants.weanedColor),
+        Categories(title: "Open", number: "10", percentage: "3%", color: Constants.openColor),
+        Categories(title: "Others", number: "5", percentage: "1%", color: Constants.othersColor),
+        Categories(title: "Gilt", number: "60", percentage: "-", color: Constants.giltColor),
+        ]
 
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.isScrollEnabled = false
         collectionView.backgroundColor = .white
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.showsVerticalScrollIndicator = false
         collectionView.register(InventoryCell.self, forCellWithReuseIdentifier: Constants.cellID)
         collectionView.register(InventoryHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Constants.headerID)
         setupNavBar()
@@ -79,21 +87,18 @@ extension InventoryController {
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let heightRatio: CGFloat = 50 / 100
-        let screenHeight = view.frame.height - topbarHeight
-        let totalCellsHeight = screenHeight * heightRatio / 4
-        return CGSize(width: view.frame.width, height: totalCellsHeight)
+        return CGSize(width: view.frame.width, height: 150)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         let screenHeight = view.frame.height - topbarHeight
-        let heightRatio: CGFloat = 40 / 100
+        let heightRatio: CGFloat = 0.4
         let headerHeight = screenHeight * heightRatio
         return CGSize(width: view.frame.width, height: headerHeight)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 20
+        return 10
     }
 
     var topbarHeight: CGFloat {
