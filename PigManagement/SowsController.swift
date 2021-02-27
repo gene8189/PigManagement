@@ -52,12 +52,12 @@ class SowsController: UITableViewController {
 
     func setupTableView() {
         tableView.register(SowCell.self, forCellReuseIdentifier: Constants.cellID)
-        
+
     }
 
     func setupNavBar() {
        
-        configureNavigationBar(preferredLargeSize: true, title: "Sow Inventory", titleColor: .white, tintColor: .white, backgroundColor: Constants.primaryColor)
+        configureNavigationBar(preferredLargeSize: true, title: "Sow Inventory", titleColor: .white, tintColor: .white, backgroundColor: .red)
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(handleAdd))
     }
 
@@ -75,16 +75,13 @@ class SowsController: UITableViewController {
 extension SowsController {
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let gradientView = UIColor.createGradientForHeaderView(view: .init(x: 0, y: 0, width: tableView.frame.height, height: 50))
 
         let label = IndentedLabel()
-        gradientView.addSubview(label)
-        label.anchor(top: gradientView.topAnchor, leading: gradientView.leadingAnchor, bottom: gradientView.bottomAnchor, trailing: gradientView.trailingAnchor)
         label.backgroundColor = .clear
         label.text = allBatches[section].name
         label.font = Constants.labelFont
         label.textColor = .white
-        return gradientView
+        return label
         }
 
 

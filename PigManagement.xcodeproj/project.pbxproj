@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B02498AB25EA1F4900532BC7 /* InventoryHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02498AA25EA1F4900532BC7 /* InventoryHeader.swift */; };
+		B02498AE25EA1F7900532BC7 /* InventoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02498AD25EA1F7900532BC7 /* InventoryCell.swift */; };
 		B037C0F925E6567200826910 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037C0F825E6567200826910 /* CoreDataManager.swift */; };
 		B037C0FC25E656B800826910 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037C0FB25E656B800826910 /* Validator.swift */; };
+		B08B61F425EA26D000E03AC8 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08B61F325EA26D000E03AC8 /* Categories.swift */; };
 		B096F43625E5DDE500955319 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B096F43525E5DDE500955319 /* AppDelegate.swift */; };
 		B096F43825E5DDE500955319 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B096F43725E5DDE500955319 /* SceneDelegate.swift */; };
 		B096F43D25E5DDE500955319 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B096F43B25E5DDE500955319 /* Main.storyboard */; };
@@ -19,14 +22,18 @@
 		B096F45325E5E16B00955319 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B096F45225E5E16B00955319 /* Extensions.swift */; };
 		B096F45625E5ED5600955319 /* SowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B096F45525E5ED5600955319 /* SowCell.swift */; };
 		B096F45925E5F05900955319 /* CreateSowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B096F45825E5F05900955319 /* CreateSowController.swift */; };
-		B096F45C25E5F63200955319 /* FloatingLabelInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B096F45B25E5F63100955319 /* FloatingLabelInput.swift */; };
+		B096F45C25E5F63200955319 /* MaterialInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B096F45B25E5F63100955319 /* MaterialInputView.swift */; };
 		B096F45F25E6308D00955319 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B096F45E25E6308D00955319 /* Constants.swift */; };
 		B0CE176725E7E5F700271D0D /* DayCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CE176625E7E5F700271D0D /* DayCalculator.swift */; };
+		B0DE1C3825E95246004444FF /* InventoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DE1C3725E95246004444FF /* InventoryController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B02498AA25EA1F4900532BC7 /* InventoryHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryHeader.swift; sourceTree = "<group>"; };
+		B02498AD25EA1F7900532BC7 /* InventoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryCell.swift; sourceTree = "<group>"; };
 		B037C0F825E6567200826910 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		B037C0FB25E656B800826910 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		B08B61F325EA26D000E03AC8 /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		B096F43225E5DDE500955319 /* PigManagement.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PigManagement.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B096F43525E5DDE500955319 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B096F43725E5DDE500955319 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,9 +46,10 @@
 		B096F45225E5E16B00955319 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B096F45525E5ED5600955319 /* SowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SowCell.swift; sourceTree = "<group>"; };
 		B096F45825E5F05900955319 /* CreateSowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSowController.swift; sourceTree = "<group>"; };
-		B096F45B25E5F63100955319 /* FloatingLabelInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingLabelInput.swift; sourceTree = "<group>"; };
+		B096F45B25E5F63100955319 /* MaterialInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialInputView.swift; sourceTree = "<group>"; };
 		B096F45E25E6308D00955319 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B0CE176625E7E5F700271D0D /* DayCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCalculator.swift; sourceTree = "<group>"; };
+		B0DE1C3725E95246004444FF /* InventoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +63,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B02498B025EA1FA000532BC7 /* Inventory */ = {
+			isa = PBXGroup;
+			children = (
+				B0DE1C3725E95246004444FF /* InventoryController.swift */,
+				B02498AD25EA1F7900532BC7 /* InventoryCell.swift */,
+				B02498AA25EA1F4900532BC7 /* InventoryHeader.swift */,
+			);
+			path = Inventory;
+			sourceTree = "<group>";
+		};
+		B08B61F225EA26BE00E03AC8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B08B61F325EA26D000E03AC8 /* Categories.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		B096F42925E5DDE500955319 = {
 			isa = PBXGroup;
 			children = (
@@ -74,9 +100,11 @@
 		B096F43425E5DDE500955319 /* PigManagement */ = {
 			isa = PBXGroup;
 			children = (
+				B08B61F225EA26BE00E03AC8 /* Model */,
 				B096F43525E5DDE500955319 /* AppDelegate.swift */,
 				B096F43725E5DDE500955319 /* SceneDelegate.swift */,
 				B096F45225E5E16B00955319 /* Extensions.swift */,
+				B02498B025EA1FA000532BC7 /* Inventory */,
 				B096F44F25E5E0C800955319 /* SowsController.swift */,
 				B0CE176625E7E5F700271D0D /* DayCalculator.swift */,
 				B096F45525E5ED5600955319 /* SowCell.swift */,
@@ -84,7 +112,7 @@
 				B037C0FB25E656B800826910 /* Validator.swift */,
 				B037C0F825E6567200826910 /* CoreDataManager.swift */,
 				B096F45E25E6308D00955319 /* Constants.swift */,
-				B096F45B25E5F63100955319 /* FloatingLabelInput.swift */,
+				B096F45B25E5F63100955319 /* MaterialInputView.swift */,
 				B096F43B25E5DDE500955319 /* Main.storyboard */,
 				B096F44125E5DDF000955319 /* Assets.xcassets */,
 				B096F44325E5DDF000955319 /* LaunchScreen.storyboard */,
@@ -164,6 +192,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0DE1C3825E95246004444FF /* InventoryController.swift in Sources */,
+				B08B61F425EA26D000E03AC8 /* Categories.swift in Sources */,
 				B096F45325E5E16B00955319 /* Extensions.swift in Sources */,
 				B096F45625E5ED5600955319 /* SowCell.swift in Sources */,
 				B0CE176725E7E5F700271D0D /* DayCalculator.swift in Sources */,
@@ -171,11 +201,13 @@
 				B096F43825E5DDE500955319 /* SceneDelegate.swift in Sources */,
 				B096F45925E5F05900955319 /* CreateSowController.swift in Sources */,
 				B037C0FC25E656B800826910 /* Validator.swift in Sources */,
+				B02498AE25EA1F7900532BC7 /* InventoryCell.swift in Sources */,
 				B096F44025E5DDE500955319 /* PigManagement.xcdatamodeld in Sources */,
 				B096F45025E5E0C800955319 /* SowsController.swift in Sources */,
-				B096F45C25E5F63200955319 /* FloatingLabelInput.swift in Sources */,
+				B096F45C25E5F63200955319 /* MaterialInputView.swift in Sources */,
 				B037C0F925E6567200826910 /* CoreDataManager.swift in Sources */,
 				B096F45F25E6308D00955319 /* Constants.swift in Sources */,
+				B02498AB25EA1F4900532BC7 /* InventoryHeader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

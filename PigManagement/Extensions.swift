@@ -44,16 +44,6 @@ extension UIColor {
         self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
     }
 
-    static func createGradientForHeaderView(view frame: CGRect = .zero) -> UIView {
-        let view = UIView(frame: frame)
-        let gradient = CAGradientLayer()
-        gradient.frame = view.frame
-        gradient.colors = Constants.colorArray
-        gradient.startPoint = CGPoint(x: 0.5, y: 1)
-        gradient.endPoint = CGPoint(x: 0.5, y: 0)
-        view.layer.insertSublayer(gradient, at: 0)
-        return view
-    }
 }
 
 class CustomNavigationController: UINavigationController {

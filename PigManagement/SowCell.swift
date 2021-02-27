@@ -6,12 +6,7 @@
 //
 
 
-enum Stages: String, CaseIterable {
-    case open
-    case gestating
-    case lactating
-    case weaned
-}
+
 
 import UIKit
 
@@ -32,6 +27,7 @@ class SowCell: UITableViewCell {
         case .gestating: circle.backgroundColor = .green
         case .lactating: circle.backgroundColor = .orange
         case .weaned: circle.backgroundColor = .purple
+
         }
     }
 
@@ -40,7 +36,7 @@ class SowCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addSubview(underLine)
-        backgroundColor = Constants.sowCellBackgroundColor
+        backgroundColor = .white
         underLine.anchor(top: bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 0, left: 20, bottom: 0, right: 20), size: .init(width: 0, height: 2))
         addSubview(nameLabel)
         addSubview(circle)
