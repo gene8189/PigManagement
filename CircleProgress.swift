@@ -44,7 +44,7 @@ class CircleProgress: UIView {
             trackLyr.path = circlePath.cgPath
             trackLyr.fillColor = UIColor.clear.cgColor
             trackLyr.strokeColor = trackClr.cgColor
-            trackLyr.lineWidth = 20
+            trackLyr.lineWidth = 15
             trackLyr.strokeEnd = 1.0
 
             layer.addSublayer(trackLyr)

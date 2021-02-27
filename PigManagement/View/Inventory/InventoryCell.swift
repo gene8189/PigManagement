@@ -32,9 +32,9 @@ class InventoryCell: BaseCell {
         categoryColorView.anchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: nil, padding: .init(top: 7, left: 10, bottom: 7, right: 0), size: .init(width: 10, height: 0))
         titleLabel.anchor(top: topAnchor, leading: categoryColorView.trailingAnchor, bottom: nil, trailing: nil, padding: .init(top: 7, left: 20, bottom: 0, right: 0), size: .init(width: 100, height: 20))
         numberLabel.anchor(top: titleLabel.bottomAnchor, leading: categoryColorView.trailingAnchor, bottom: categoryColorView.bottomAnchor, trailing: circle.leadingAnchor, padding: .init(top: 0, left: 20 , bottom: 0 , right: 10))
-        circle.anchor(top: nil, leading: numberLabel.trailingAnchor, bottom: nil, trailing: percentageLabel.leadingAnchor, padding: .init(top: 0, left: 10, bottom: 0, right: 10), size: .init(width: 100, height: 100))
+        circle.anchor(top: nil, leading: numberLabel.trailingAnchor, bottom: nil, trailing: percentageLabel.leadingAnchor, padding: .init(top: 0, left: 10, bottom: 0, right: 20), size: .init(width: 100, height: 100))
         circle.centerYInSuperview()
-        percentageLabel.anchor(top: nil, leading: circle.trailingAnchor, bottom: nil, trailing: arrowImageView.leadingAnchor, padding: .init(top: 0, left: 10, bottom: 0, right: 20), size: .init(width: 70, height: 50))
+        percentageLabel.anchor(top: nil, leading: circle.trailingAnchor, bottom: nil, trailing: arrowImageView.leadingAnchor, padding: .init(top: 0, left: 20, bottom: 0, right: 20), size: .init(width: 70, height: 50))
         percentageLabel.centerYInSuperview()
 
         arrowImageView.anchor(top: nil, leading: percentageLabel.trailingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 0, left: 20, bottom: 0, right: 10), size: .init(width: 40, height: 40))
