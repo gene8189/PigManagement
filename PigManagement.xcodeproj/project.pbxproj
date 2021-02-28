@@ -28,6 +28,7 @@
 		B0CE176725E7E5F700271D0D /* DayCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CE176625E7E5F700271D0D /* DayCalculator.swift */; };
 		B0DE1C3825E95246004444FF /* InventoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DE1C3725E95246004444FF /* InventoryController.swift */; };
 		B0EAAD9F25EAB35D00C8CA9D /* CircleProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EAAD9E25EAB35D00C8CA9D /* CircleProgress.swift */; };
+		B0EAADAB25EBF7E800C8CA9D /* TotalCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EAADAA25EBF7E800C8CA9D /* TotalCircle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		B0CE176625E7E5F700271D0D /* DayCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCalculator.swift; sourceTree = "<group>"; };
 		B0DE1C3725E95246004444FF /* InventoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryController.swift; sourceTree = "<group>"; };
 		B0EAAD9E25EAB35D00C8CA9D /* CircleProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgress.swift; sourceTree = SOURCE_ROOT; };
+		B0EAADAA25EBF7E800C8CA9D /* TotalCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TotalCircle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 				B02498AD25EA1F7900532BC7 /* InventoryCell.swift */,
 				B022EB5625EA85D600EC23A9 /* BaseCell.swift */,
 				B02498AA25EA1F4900532BC7 /* InventoryHeader.swift */,
+				B0EAADAA25EBF7E800C8CA9D /* TotalCircle.swift */,
 			);
 			path = Inventory;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 				B037C0FC25E656B800826910 /* Validator.swift in Sources */,
 				B02498AE25EA1F7900532BC7 /* InventoryCell.swift in Sources */,
 				B096F44025E5DDE500955319 /* PigManagement.xcdatamodeld in Sources */,
+				B0EAADAB25EBF7E800C8CA9D /* TotalCircle.swift in Sources */,
 				B022EB5725EA85D600EC23A9 /* BaseCell.swift in Sources */,
 				B096F45025E5E0C800955319 /* SowsController.swift in Sources */,
 				B096F45C25E5F63200955319 /* MaterialInputView.swift in Sources */,

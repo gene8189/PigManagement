@@ -8,12 +8,17 @@
 import UIKit
 
 class InventoryHeader: UICollectionViewCell {
-
+    var categories: [Categories] = [
+                                    Categories(title: "Gestating", number: "525", percentage: 80, color: Constants.gestatingColor),
+                                    Categories(title: "Lactating", number: "183", percentage: 12, color: Constants.lactatingColor),
+                                    Categories(title: "Weaned", number: "30", percentage: 4, color: Constants.weanedColor),
+                                    Categories(title: "Open", number: "10", percentage: 3, color: Constants.openColor)]
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        addSubview(circle)
+        circle.centerInSuperview(size: .init(width: 300, height: 300))
 
-        
 
     }
 
@@ -21,21 +26,10 @@ class InventoryHeader: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-
-
-    let circleLabel: UILabel = {
-        let label = UILabel()
-        let attributedString = NSMutableAttributedString(string: "80", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: Constants.inventoryCellNumberFont ])
-        attributedString.append(NSAttributedString(string: "\n\nFarrowing rate %", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black]))
-        label.attributedText = attributedString
-        label.numberOfLines = 0
-        label.textAlignment = .center
-        return label
+    lazy var circle: TotalCircle = {
+        let c = TotalCircle(frame: .init(x: 0, y: 0, width: 300, height: 300), categories: categories)
+        return c
     }()
-
-
-
-
 
     
 }
