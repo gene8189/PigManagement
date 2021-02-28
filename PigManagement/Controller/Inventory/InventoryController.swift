@@ -30,11 +30,11 @@ class InventoryController: UICollectionViewController, UICollectionViewDelegateF
     }
 
     var categories: [Categories] = [
-        Categories(title: "Gestating", number: "525", percentage: "80%", color: Constants.gestatingColor),
-        Categories(title: "Lactating", number: "183", percentage: "12%", color: Constants.lactatingColor),
-        Categories(title: "Weaned", number: "30", percentage: "4%", color: Constants.weanedColor),
-        Categories(title: "Open", number: "10", percentage: "3%", color: Constants.openColor),
-        Categories(title: "Others", number: "5", percentage: "1%", color: Constants.othersColor),
+        Categories(title: "Gestating", number: "525", percentage: 80, color: Constants.gestatingColor),
+        Categories(title: "Lactating", number: "183", percentage: 12, color: Constants.lactatingColor),
+        Categories(title: "Weaned", number: "30", percentage: 4, color: Constants.weanedColor),
+        Categories(title: "Open", number: "10", percentage: 3, color: Constants.openColor),
+        Categories(title: "Others", number: "5", percentage: 1, color: Constants.othersColor),
         ]
 
 
@@ -85,14 +85,11 @@ extension InventoryController {
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 150)
+        return CGSize(width: view.frame.width, height: Constants.inventoryCellHeight )
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        let screenHeight = view.frame.height - topbarHeight
-        let heightRatio: CGFloat = 0.4
-        let headerHeight = screenHeight * heightRatio
-        return CGSize(width: view.frame.width, height: headerHeight)
+        return CGSize(width: view.frame.width, height: Constants.inventoryHeaderHeight)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

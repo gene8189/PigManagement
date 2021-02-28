@@ -11,11 +11,11 @@ import UIKit
 struct Categories {
     var title: String
     var number: String
-    var percentage: String
+    var percentage: CGFloat
     var color: UIColor
 
 
-    init(title: String, number: String, percentage: String, color: UIColor) {
+    init(title: String, number: String, percentage: CGFloat, color: UIColor) {
         self.title = title
         self.number = number
         self.percentage = percentage

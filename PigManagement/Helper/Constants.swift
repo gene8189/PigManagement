@@ -24,9 +24,9 @@ struct Constants {
     static let floatingLabelFont = UIFont.systemFont(ofSize: 16)
     static let buttonFont = UIFont.boldSystemFont(ofSize: 20)
     static let navBarFont = UIFont.boldSystemFont(ofSize: 22)
-    static let inventoryCellTopLabelFont = UIFont.systemFont(ofSize: 20, weight: .semibold)
-    static let inventoryCellNumberFont = UIFont.systemFont(ofSize: 36, weight: .semibold)
-    static let inventoryCellPercentFont = UIFont.systemFont(ofSize: 30, weight: .semibold)
+    static let inventoryCellTopLabelFont = UIFont.systemFont(ofSize: 16, weight: .semibold)
+    static let inventoryCellNumberFont = UIFont.systemFont(ofSize: 26, weight: .semibold)
+    static let inventoryCellPercentFont = UIFont.systemFont(ofSize: 22, weight: .semibold)
     static let gestatingColor = UIColor(hexString: "008000")
     static let openColor = UIColor(hexString: "B21E35")
     static let lactatingColor = UIColor(hexString: "FF5400")
@@ -34,8 +34,8 @@ struct Constants {
     static let weanedColor = UIColor(hexString: "00B4D8")
     static let giltColor = UIColor(hexString: "E600C3")
     static let grayColor = UIColor(hexString: "E5E6E4")
-
-
+    static let inventoryHeaderHeight: CGFloat = 400
+    static let inventoryCellHeight: CGFloat = 85
     static let buttonCornerRadius: CGFloat = 20
     static let cellCornerRadius: CGFloat = 25
 }
