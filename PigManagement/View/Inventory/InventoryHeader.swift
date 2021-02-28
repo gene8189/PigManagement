@@ -13,10 +13,7 @@ class InventoryHeader: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        addSubview(circleProgressBar)
-        circleProgressBar.addSubview(circleLabel)
-        circleProgressBar.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 30, left: 20, bottom: 0, right: 0), size: .init(width: 200, height: 200))
-        circleLabel.centerInSuperview()
+        
 
     }
 
@@ -24,12 +21,7 @@ class InventoryHeader: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    let circleProgressBar: CircleProgress = {
-        let cpb = CircleProgress(frame: .init(x: 0, y: 0, width: 200, height: 200))
-        cpb.progressClr = Constants.weanedColor
-        cpb.percentage = 80
-        return cpb
-    }()
+
 
     let circleLabel: UILabel = {
         let label = UILabel()

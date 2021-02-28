@@ -51,13 +51,13 @@ class CircleProgress: UIView {
         trackLyr.path = circlePath.cgPath
         trackLyr.fillColor = UIColor.clear.cgColor
         trackLyr.strokeColor = trackClr.cgColor
-        trackLyr.lineWidth = 10
+        trackLyr.lineWidth = 15
         layer.addSublayer(trackLyr)
         let circlePath2 = UIBezierPath(arcCenter: center, radius: bounds.maxX / 2, startAngle: 1.5 * pi, endAngle: endAngle, clockwise: true)
         progressLyr.path = circlePath2.cgPath
         progressLyr.fillColor  = UIColor.clear.cgColor
         progressLyr.strokeColor = progressClr.cgColor
-        progressLyr.lineWidth = 10
+        progressLyr.lineWidth = 15
         layer.addSublayer(progressLyr)
     }
 

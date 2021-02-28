@@ -34,7 +34,8 @@ struct Constants {
     static let weanedColor = UIColor(hexString: "00B4D8")
     static let giltColor = UIColor(hexString: "E600C3")
     static let grayColor = UIColor(hexString: "E5E6E4")
-    static let inventoryHeaderHeight: CGFloat = 400
+    static let headerCircleColor = UIColor(hexString: "FF4000")
+    static let inventoryHeaderHeight: CGFloat = 360
     static let inventoryCellHeight: CGFloat = 85
     static let buttonCornerRadius: CGFloat = 20
     static let cellCornerRadius: CGFloat = 25
