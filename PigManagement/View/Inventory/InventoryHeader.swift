@@ -12,7 +12,8 @@ class InventoryHeader: UICollectionViewCell {
                                     Categories(title: "Gestating", number: "525", percentage: 80, color: Constants.gestatingColor),
                                     Categories(title: "Lactating", number: "183", percentage: 12, color: Constants.lactatingColor),
                                     Categories(title: "Weaned", number: "30", percentage: 4, color: Constants.weanedColor),
-                                    Categories(title: "Open", number: "10", percentage: 3, color: Constants.openColor)]
+                                    Categories(title: "Open", number: "10", percentage: 3, color: Constants.openColor),
+                                    Categories(title: "Others", number: "5", percentage: 1, color: Constants.othersColor),]
 
     override init(frame: CGRect) {
         super.init(frame: frame)

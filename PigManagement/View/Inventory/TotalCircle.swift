@@ -27,7 +27,7 @@ class TotalCircle: UIView {
         }
     }
 
-    public var lineWidth: CGFloat = 20 {
+    public var lineWidth: CGFloat = 25 {
         didSet {
             foregroundLayerOne.lineWidth = lineWidth
             foregroundLayerTwo.lineWidth = lineWidth
@@ -42,11 +42,10 @@ class TotalCircle: UIView {
         super.init(frame: frame)
         self.categories = categories
         drawLayerOne()
-        drawLayerFour()
-
         drawLayerTwo()
         drawLayerThree()
-
+        drawLayerFour()
+//        drawLayerFive()
 
 
     }
@@ -65,7 +64,7 @@ class TotalCircle: UIView {
         self.foregroundLayerOne.path = path.cgPath
         self.foregroundLayerOne.strokeColor = categories[0].color.cgColor
         self.foregroundLayerOne.lineWidth = lineWidth
-        self.foregroundLayerOne.lineCap = CAShapeLayerLineCap.round
+        self.foregroundLayerOne.lineCap = CAShapeLayerLineCap.butt
         self.foregroundLayerOne.fillColor = UIColor.clear.cgColor
         endAngleOne = endAngle
         print("this is end angle one \(endAngleOne)")
@@ -81,7 +80,7 @@ class TotalCircle: UIView {
         self.foregroundLayerTwo.path = path.cgPath
         self.foregroundLayerTwo.strokeColor = categories[1].color.cgColor
         self.foregroundLayerTwo.lineWidth = lineWidth
-        self.foregroundLayerTwo.lineCap = CAShapeLayerLineCap.round
+        self.foregroundLayerTwo.lineCap = CAShapeLayerLineCap.butt
         self.foregroundLayerTwo.fillColor = UIColor.clear.cgColor
         endAngleTwo = endAngle
         self.layer.addSublayer(foregroundLayerTwo)
@@ -94,7 +93,7 @@ class TotalCircle: UIView {
         self.foregroundLayerThree.path = path.cgPath
         self.foregroundLayerThree.strokeColor = categories[2].color.cgColor
         self.foregroundLayerThree.lineWidth = lineWidth
-        self.foregroundLayerThree.lineCap = CAShapeLayerLineCap.round
+        self.foregroundLayerThree.lineCap = CAShapeLayerLineCap.butt
         self.foregroundLayerThree.fillColor = UIColor.clear.cgColor
         endAngleThree = endAngle
         self.layer.addSublayer(foregroundLayerThree)
@@ -107,13 +106,23 @@ class TotalCircle: UIView {
         self.foregroundLayerFour.path = path.cgPath
         self.foregroundLayerFour.strokeColor = categories[3].color.cgColor
         self.foregroundLayerFour.lineWidth = lineWidth
-        self.foregroundLayerFour.lineCap = CAShapeLayerLineCap.round
+        self.foregroundLayerFour.lineCap = CAShapeLayerLineCap.butt
         self.foregroundLayerFour.fillColor = UIColor.clear.cgColor
         endAngleFour = endAngle
         self.layer.addSublayer(foregroundLayerFour)
     }
 
-
+    private var endAngleFive = CGFloat()
+    public func drawLayerFive() {
+        let endAngle = 1.5 * CGFloat.pi - (2 * CGFloat.pi * categories[4].percentage / 100)
+        let path = UIBezierPath(arcCenter: pathCenter, radius: self.radius, startAngle: 1.5 * CGFloat.pi, endAngle: endAngle, clockwise: false)
+        self.foregroundLayerFour.path = path.cgPath
+        self.foregroundLayerFour.strokeColor = categories[4].color.cgColor
+        self.foregroundLayerFour.lineWidth = lineWidth
+        self.foregroundLayerFour.lineCap = CAShapeLayerLineCap.butt
+        self.foregroundLayerFour.fillColor = UIColor.clear.cgColor
+        self.layer.addSublayer(foregroundLayerFour)
+    }
 
 
 
