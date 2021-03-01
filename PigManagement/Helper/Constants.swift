@@ -37,6 +37,8 @@ struct Constants {
     static let grayColor = UIColor(hexString: "CED4DA")
     static let buttonGrayColor = UIColor(hexString: "6C757D")
     static let headerCircleColor = UIColor(hexString: "FF4000")
+    static let createSowColor = UIColor(hexString: "FF477E")
+    static let createBoarColor = #colorLiteral(red: 0.1978052557, green: 0.7340510488, blue: 0.8285663128, alpha: 1)
     static let inventoryHeaderHeight: CGFloat = 360
     static let inventoryCellHeight: CGFloat = 85
     static let buttonCornerRadius: CGFloat = 20

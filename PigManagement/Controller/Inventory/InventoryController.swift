@@ -81,7 +81,23 @@ extension InventoryController {
 
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: Constants.headerID , for: indexPath) as! InventoryHeader
+        header.sowEntryButton.addTarget(self, action: #selector(handleEntry), for: .touchUpInside)
+        header.boarEntryButton.addTarget(self, action: #selector(handleEntry), for: .touchUpInside)
         return header
+    }
+
+    @objc func handleEntry(button: UIButton) {
+        let createSowController = CreateSowController()
+        if button.currentTitle == "Boar Entry" {
+            createSowController.saveButton.backgroundColor = Constants.createBoarColor
+            createSowController.segmentControl.isHidden = true
+            createSowController.isBoar = true
+        } else {
+            createSowController.saveButton.backgroundColor = Constants.createSowColor
+        }
+
+
+        present(createSowController, animated: true, completion: nil)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

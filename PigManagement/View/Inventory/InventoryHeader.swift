@@ -60,6 +60,7 @@ class InventoryHeader: UICollectionViewCell {
         button.layer.borderWidth = 1
         button.layer.borderColor = Constants.buttonGrayColor.cgColor
         button.centerTextAndImage(spacing: 10)
+        
         return button
     }()
 
@@ -71,6 +72,7 @@ class InventoryHeader: UICollectionViewCell {
         button.layer.borderWidth = 1
         button.layer.borderColor = Constants.buttonGrayColor.cgColor
         button.centerTextAndImage(spacing: 10)
+
         return button
     }()
 

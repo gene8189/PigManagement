@@ -19,7 +19,7 @@ class MaterialInputView: UIView {
 
     lazy var line: UIView = {
         let view = UIView()
-        view.backgroundColor = Constants.primaryColor
+        view.backgroundColor = color
         return view
     }()
 
@@ -72,14 +72,14 @@ class MaterialInputView: UIView {
                 self.label.font =  Constants.floatingLabelFont
                 self.label.textColor = self.color
                 self.label.backgroundColor = .white
-                self.line.backgroundColor = Constants.primaryColor
+                self.line.backgroundColor = self.color
                 
             } else {
 
                 self.label.textColor = self.color
                 self.label.text = self.placeholder
                 self.label.font = Constants.labelFont
-                self.line.backgroundColor = Constants.primaryColor
+                self.line.backgroundColor = self.color
 
             }
         }
