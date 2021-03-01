@@ -23,7 +23,7 @@ class TotalCircle: UIView {
 
     private var radius: CGFloat {
         get {
-            return self.frame.width/2
+            return (min(self.frame.width , self.frame.height) - lineWidth) / 2
         }
     }
 
@@ -45,7 +45,7 @@ class TotalCircle: UIView {
         drawLayerTwo()
         drawLayerThree()
         drawLayerFour()
-//        drawLayerFive()
+        drawLayerFive()
 
 
     }
@@ -112,17 +112,18 @@ class TotalCircle: UIView {
         self.layer.addSublayer(foregroundLayerFour)
     }
 
-    private var endAngleFive = CGFloat()
+
     public func drawLayerFive() {
-        let endAngle = 1.5 * CGFloat.pi - (2 * CGFloat.pi * categories[4].percentage / 100)
-        let path = UIBezierPath(arcCenter: pathCenter, radius: self.radius, startAngle: 1.5 * CGFloat.pi, endAngle: endAngle, clockwise: false)
-        self.foregroundLayerFour.path = path.cgPath
-        self.foregroundLayerFour.strokeColor = categories[4].color.cgColor
-        self.foregroundLayerFour.lineWidth = lineWidth
-        self.foregroundLayerFour.lineCap = CAShapeLayerLineCap.butt
-        self.foregroundLayerFour.fillColor = UIColor.clear.cgColor
-        self.layer.addSublayer(foregroundLayerFour)
+        let endAngle = endAngleFour + 2 * CGFloat.pi * (categories[4].percentage / 100)
+        let path = UIBezierPath(arcCenter: pathCenter, radius: self.radius, startAngle: endAngleFour, endAngle: endAngle, clockwise: true)
+        self.foregroundLayerFive.path = path.cgPath
+        self.foregroundLayerFive.strokeColor = UIColor.purple.cgColor
+        self.foregroundLayerFive.lineWidth = lineWidth
+        self.foregroundLayerFive.lineCap = CAShapeLayerLineCap.butt
+        self.foregroundLayerFive.fillColor = UIColor.clear.cgColor
+        self.layer.addSublayer(foregroundLayerFive)
     }
+
 
 
 
