@@ -17,10 +17,8 @@ class InventoryHeader: UICollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubview(containerView)
-        containerView.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 0, left: 0, bottom: 0, right: 0), size: .init(width: frame.width - 100, height: 300))
-        containerView.centerXInSuperview()
-        containerView.addSubview(circle)
+
+        addSubview(circle)
         addSubview(totalLabel)
         backgroundColor = .white
         circle.anchor(top: totalLabel.bottomAnchor, leading: nil, bottom: nil, trailing: nil, padding: .init(top: 10, left: 0, bottom: 0, right: 0), size: .init(width: 200, height: 200))
@@ -47,10 +45,6 @@ class InventoryHeader: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    let containerView: UIView = {
-        let view = UIView()
-        return view
-    }()
 
     lazy var circle: TotalCircle = {
         let c = TotalCircle(frame: .init(x: 0, y: 0, width: 200, height: 200), categories: categories)

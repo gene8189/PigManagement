@@ -21,11 +21,7 @@ class CircleProgress: UIView {
         }
     }
 
-    var trackClr = UIColor.black {
-        didSet {
-            trackLyr.strokeColor = trackClr.cgColor
-        }
-    }
+
 
     var percentage = CGFloat() {
         didSet {
@@ -49,22 +45,34 @@ class CircleProgress: UIView {
                                       clockwise: true)
         
         trackLyr.path = circlePath.cgPath
-        trackLyr.fillColor = UIColor.black.cgColor
-        trackLyr.strokeColor = trackClr.cgColor
+        trackLyr.fillColor = UIColor.clear.cgColor
+        trackLyr.strokeColor = UIColor.black.cgColor
         trackLyr.lineWidth = 15
         layer.addSublayer(trackLyr)
+        circleAnimate()
         let circlePath2 = UIBezierPath(arcCenter: center, radius: bounds.maxX / 2, startAngle: 1.5 * pi, endAngle: endAngle, clockwise: true)
         progressLyr.path = circlePath2.cgPath
         progressLyr.fillColor  = UIColor.clear.cgColor
         progressLyr.strokeColor = progressClr.cgColor
         progressLyr.lineWidth = 15
         layer.addSublayer(progressLyr)
+
+
     }
 
     private func calculateEndAngle(percent: CGFloat) -> CGFloat {
-        let unitValue =  0.5 * CGFloat.pi  / 25
         let startAngle = 1.5 * CGFloat.pi
-        let endAngle = startAngle +  percent * unitValue
+        let endAngle = startAngle +  percent / 100 * 2 * CGFloat.pi
         return endAngle
+    }
+
+    @objc func circleAnimate() {
+        let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
+        basicAnimation.fromValue = 0
+        basicAnimation.toValue = 1
+        basicAnimation.duration = 0.5
+        basicAnimation.fillMode = .forwards
+        basicAnimation.isRemovedOnCompletion = false
+        progressLyr.add(basicAnimation, forKey: "basicAnimation")
     }
 }

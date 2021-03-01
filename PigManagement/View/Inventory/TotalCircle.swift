@@ -13,6 +13,7 @@ class TotalCircle: UIView {
     private let foregroundLayerThree = CAShapeLayer()
     private let foregroundLayerFour = CAShapeLayer()
     private let foregroundLayerFive = CAShapeLayer()
+
     var categories = [Categories]()
 
     private var pathCenter: CGPoint {
@@ -41,11 +42,12 @@ class TotalCircle: UIView {
     init(frame: CGRect, categories: [Categories]) {
         super.init(frame: frame)
         self.categories = categories
-        drawLayerOne()
-        drawLayerTwo()
-        drawLayerThree()
-        drawLayerFour()
-        drawLayerFive()
+        circleAnimation()
+        self.drawLayerOne()
+        self.drawLayerTwo()
+        self.drawLayerThree()
+        self.drawLayerFour()
+        self.drawLayerFive()
 
 
     }
@@ -122,10 +124,30 @@ class TotalCircle: UIView {
         self.foregroundLayerFive.lineCap = CAShapeLayerLineCap.butt
         self.foregroundLayerFive.fillColor = UIColor.clear.cgColor
         self.layer.addSublayer(foregroundLayerFive)
+
     }
+
+    func circleAnimation() {
+        let layers = [foregroundLayerOne, foregroundLayerTwo , foregroundLayerThree , foregroundLayerFour, foregroundLayerFive]
+        layers.forEach { (layer) in
+        let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
+        basicAnimation.fromValue = 0
+        basicAnimation.toValue = 1
+            basicAnimation.duration = 0.5
+        basicAnimation.fillMode = .forwards
+        basicAnimation.isRemovedOnCompletion = false
+        layer.add(basicAnimation, forKey: nil)
+        }
+    }
+}
+
+
+
 
 
 
 
     
-}
+
+
+
