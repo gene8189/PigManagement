@@ -11,6 +11,9 @@ class InventoryHeader: UICollectionViewCell {
     var circleSize: CGFloat {
         return self.frame.height * 0.5
     }
+    var circleHeight: CGFloat {
+        return (self.frame.height * 2 / 3 - 50)
+    }
     var categories: [Categories] = [
                                     Categories(title: "Gestating", number: "525", percentage: 80, color: Constants.gestatingColor),
                                     Categories(title: "Lactating", number: "183", percentage: 12, color: Constants.lactatingColor),
@@ -29,8 +32,9 @@ class InventoryHeader: UICollectionViewCell {
         containerView.addSubview(circle)
         containerView.addSubview(totalLabel)
         containerView.addSubview(totalNumberLabel)
-        totalLabel.anchor(top: containerView.topAnchor, leading: containerView.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 10, left: 30, bottom: 0, right: 0))
-        circle.anchor(top: totalLabel.bottomAnchor, leading: containerView.leadingAnchor, bottom: containerView.bottomAnchor, trailing: nil, padding: .init(top: 5, left: 10, bottom: 10, right: 0), size: .init(width: 120, height: 0))
+        totalLabel.centerXAnchor.constraint(equalTo: circle.centerXAnchor).isActive = true
+        totalLabel.anchor(top: containerView.topAnchor, leading: nil, bottom: nil, trailing: nil, padding: .init(top: 10, left: 0, bottom: 0, right: 0))
+        circle.anchor(top: totalLabel.bottomAnchor, leading: containerView.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 5, left: 10, bottom: 10, right: 0), size: .init(width: circleHeight, height: circleHeight))
 
         circle.addSubview(totalNumberLabel)
         totalNumberLabel.centerInSuperview()
@@ -74,7 +78,7 @@ class InventoryHeader: UICollectionViewCell {
     }()
 
     lazy var circle: TotalCircle = {
-        let c = TotalCircle(frame: .init(x: 0, y: 0, width: 120, height: 120), categories: categories)
+        let c = TotalCircle(frame: .init(x: 0, y: 0, width: circleHeight, height: circleHeight), categories: categories)
         return c
     }()
 
