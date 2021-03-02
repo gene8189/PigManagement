@@ -18,6 +18,14 @@ enum Stages: String, CaseIterable {
 
 
 class InventoryController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+    var topbarHeight: CGFloat {
+            return (view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0.0) +
+                (self.navigationController?.navigationBar.frame.height ?? 0.0)
+        }
+
+    var tabBarHeight: CGFloat {
+        return self.tabBarController?.tabBar.frame.size.height ?? 0.0
+    }
 
     init() {
         let layout = UICollectionViewFlowLayout()
@@ -29,6 +37,7 @@ class InventoryController: UICollectionViewController, UICollectionViewDelegateF
         navigationController?.isNavigationBarHidden = true
     }
 
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -39,17 +48,20 @@ class InventoryController: UICollectionViewController, UICollectionViewDelegateF
         Categories(title: "Weaned", number: "30", percentage: 4, color: Constants.weanedColor),
         Categories(title: "Open", number: "10", percentage: 3, color: Constants.openColor),
         Categories(title: "Others", number: "5", percentage: 1, color: Constants.othersColor),
+        
         ]
 
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
+      
         collectionView.backgroundColor = .white
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
         collectionView.register(InventoryCell.self, forCellWithReuseIdentifier: Constants.cellID)
         collectionView.register(InventoryHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Constants.headerID)
+
     }
 }
 
@@ -105,13 +117,6 @@ extension InventoryController {
         return 10
     }
 
-    var topbarHeight: CGFloat {
-            return (view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0.0) +
-                (self.navigationController?.navigationBar.frame.height ?? 0.0)
-        }
 
-    var tabBarHeight: CGFloat {
-        return self.tabBarController?.tabBar.frame.size.height ?? 0.0
-    }
 
 }

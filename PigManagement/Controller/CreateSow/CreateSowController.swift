@@ -51,7 +51,7 @@ class CreateSowController: UIViewController {
         containerView.addSubview(entryDateTextField)
         containerView.addSubview(segmentControl)
         containerView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 0))
-        containerView.constraintHeight(constant: 600)
+        containerView.constraintHeight(constant: 500)
         sowNameTextField.anchor(top: containerView.topAnchor, leading: containerView.leadingAnchor, bottom: nil, trailing: containerView.trailingAnchor, padding: .init(top: 70, left: 20, bottom: 0, right: 10), size: .init(width: 0, height: 50))
         entryDateTextField.anchor(top: sowNameTextField.bottomAnchor, leading: containerView.leadingAnchor, bottom: nil, trailing: containerView.trailingAnchor, padding: .init(top: 20, left: 20, bottom: 0, right: 10), size: .init(width: 0, height: 50))
         segmentControl.anchor(top: entryDateTextField.bottomAnchor, leading: containerView.leadingAnchor, bottom: nil, trailing: containerView.trailingAnchor, padding: .init(top: 20, left: 20, bottom: 0, right: 20), size: .init(width: 0, height: 50))
@@ -62,8 +62,8 @@ class CreateSowController: UIViewController {
 
         containerView.addSubview(saveButton)
         containerView.addSubview(dismissButton)
-        saveButton.anchor(top: nil, leading: containerView.leadingAnchor, bottom: dismissButton.topAnchor, trailing: containerView.trailingAnchor, padding: .init(top: 0, left: 20, bottom: 20, right: 20), size: .init(width: 0, height: 50))
-        dismissButton.anchor(top: nil, leading: containerView.leadingAnchor, bottom: containerView.bottomAnchor, trailing: containerView.trailingAnchor, padding: .init(top: 0, left: 20, bottom: 40, right: 20), size: .init(width: 0, height: 50))
+        saveButton.anchor(top: parityTextField.bottomAnchor, leading: containerView.leadingAnchor, bottom: dismissButton.topAnchor, trailing: containerView.trailingAnchor, padding: .init(top: 20, left: 20, bottom: 20, right: 20), size: .init(width: 0, height: 50))
+        dismissButton.anchor(top: saveButton.bottomAnchor, leading: containerView.leadingAnchor, bottom: nil, trailing: containerView.trailingAnchor, padding: .init(top: 20, left: 20, bottom: 0, right: 20), size: .init(width: 0, height: 50))
         sowNameTextField.textField.becomeFirstResponder()
     }
 
