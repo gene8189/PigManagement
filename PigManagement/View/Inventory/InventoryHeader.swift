@@ -22,20 +22,19 @@ class InventoryHeader: UICollectionViewCell {
         super.init(frame: frame)
         backgroundColor = .white
         addSubview(baseView)
+
         baseView.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 10, left: 10, bottom: 0, right: 10), size: .init(width: 0, height: frame.height * 2 / 3))
-        addSubview(circle)
-        addSubview(totalLabel)
-        addSubview(totalNumberLabel)
-        totalLabel.centerXInSuperview()
-        totalLabel.anchor(top: topAnchor, leading: nil, bottom: nil, trailing: nil, padding: .init(top: 10, left: 0, bottom: 0, right: 0))
-        circle.anchor(top: totalLabel.bottomAnchor, leading: nil, bottom: nil, trailing: nil, padding: .init(top: 5, left: 0, bottom: 0, right: 0), size: .init(width: 100, height: 100))
-        circle.centerXInSuperview()
+        baseView.addSubview(containerView)
+        containerView.fillSuperView()
+        containerView.addSubview(circle)
+        containerView.addSubview(totalLabel)
+        containerView.addSubview(totalNumberLabel)
+        totalLabel.anchor(top: containerView.topAnchor, leading: containerView.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 10, left: 30, bottom: 0, right: 0))
+        circle.anchor(top: totalLabel.bottomAnchor, leading: containerView.leadingAnchor, bottom: containerView.bottomAnchor, trailing: nil, padding: .init(top: 5, left: 10, bottom: 10, right: 0), size: .init(width: 120, height: 0))
+
         circle.addSubview(totalNumberLabel)
         totalNumberLabel.centerInSuperview()
 
-        addSubview(sowEntryButton)
-        sowEntryButton.centerXInSuperview(size: .init(width: 100, height: 50))
-        sowEntryButton.anchor(top: nil, leading: nil, bottom: bottomAnchor, trailing: nil, padding: .init(top: 0, left: 0, bottom: 10, right: 0))
 
         let buttonStack = UIStackView(arrangedSubviews: [sowEntryButton, boarEntryButton])
         addSubview(buttonStack)
@@ -75,7 +74,7 @@ class InventoryHeader: UICollectionViewCell {
     }()
 
     lazy var circle: TotalCircle = {
-        let c = TotalCircle(frame: .init(x: 0, y: 0, width: 100, height: 100), categories: categories)
+        let c = TotalCircle(frame: .init(x: 0, y: 0, width: 120, height: 120), categories: categories)
         return c
     }()
 
