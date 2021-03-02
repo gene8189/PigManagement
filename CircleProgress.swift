@@ -39,7 +39,7 @@ class CircleProgress: UIView {
         let pi = CGFloat.pi
         let centre = CGPoint(x: bounds.midX, y: bounds.midY)
         let circlePath = UIBezierPath(arcCenter: centre,
-                                      radius: bounds.maxX/2,
+                                      radius: (bounds.maxX - 15)/2,
                                       startAngle: 0,
                                       endAngle: 2 * pi  ,
                                       clockwise: true)
@@ -49,8 +49,7 @@ class CircleProgress: UIView {
         trackLyr.strokeColor = UIColor.black.cgColor
         trackLyr.lineWidth = 15
         layer.addSublayer(trackLyr)
-        circleAnimate()
-        let circlePath2 = UIBezierPath(arcCenter: center, radius: bounds.maxX / 2, startAngle: 1.5 * pi, endAngle: endAngle, clockwise: true)
+        let circlePath2 = UIBezierPath(arcCenter: center, radius: (bounds.maxX - 15)/2, startAngle: 1.5 * pi, endAngle: endAngle, clockwise: true)
         progressLyr.path = circlePath2.cgPath
         progressLyr.fillColor  = UIColor.clear.cgColor
         progressLyr.strokeColor = progressClr.cgColor

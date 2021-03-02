@@ -8,6 +8,9 @@
 import UIKit
 
 class InventoryHeader: UICollectionViewCell {
+    var circleSize: CGFloat {
+        return self.frame.height * 0.5
+    }
     var categories: [Categories] = [
                                     Categories(title: "Gestating", number: "525", percentage: 80, color: Constants.gestatingColor),
                                     Categories(title: "Lactating", number: "183", percentage: 12, color: Constants.lactatingColor),
@@ -17,25 +20,30 @@ class InventoryHeader: UICollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-
+        backgroundColor = .white
+        addSubview(baseView)
+        baseView.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 10, left: 10, bottom: 0, right: 10), size: .init(width: 0, height: frame.height * 2 / 3))
         addSubview(circle)
         addSubview(totalLabel)
-        backgroundColor = .white
-        circle.anchor(top: totalLabel.bottomAnchor, leading: nil, bottom: nil, trailing: nil, padding: .init(top: 10, left: 0, bottom: 0, right: 0), size: .init(width: 200, height: 200))
+        addSubview(totalNumberLabel)
+        totalLabel.centerXInSuperview()
+        totalLabel.anchor(top: topAnchor, leading: nil, bottom: nil, trailing: nil, padding: .init(top: 10, left: 0, bottom: 0, right: 0))
+        circle.anchor(top: totalLabel.bottomAnchor, leading: nil, bottom: nil, trailing: nil, padding: .init(top: 5, left: 0, bottom: 0, right: 0), size: .init(width: 100, height: 100))
         circle.centerXInSuperview()
+        circle.addSubview(totalNumberLabel)
+        totalNumberLabel.centerInSuperview()
 
-
+        addSubview(sowEntryButton)
+        sowEntryButton.centerXInSuperview(size: .init(width: 100, height: 50))
+        sowEntryButton.anchor(top: nil, leading: nil, bottom: bottomAnchor, trailing: nil, padding: .init(top: 0, left: 0, bottom: 10, right: 0))
 
         let buttonStack = UIStackView(arrangedSubviews: [sowEntryButton, boarEntryButton])
         addSubview(buttonStack)
         buttonStack.distribution = .fillEqually
-        buttonStack.anchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 0))
-        buttonStack.constraintHeight(constant: 60)
+        buttonStack.spacing = 10
+        buttonStack.anchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, padding: .init(top: 0, left: 10, bottom: 10, right: 10))
+        buttonStack.constraintHeight(constant: 40)
 
-        totalLabel.anchor(top: topAnchor, leading: nil, bottom: nil, trailing: nil, padding: .init(top: 20, left: 0, bottom: 0, right: 0), size: .init(width: 200, height: 50))
-        totalLabel.centerXInSuperview()
-        circle.addSubview(totalNumberLabel)
-        totalNumberLabel.centerInSuperview(size: .init(width: 100, height: 100))
 
 
 
@@ -46,31 +54,48 @@ class InventoryHeader: UICollectionViewCell {
     }
 
 
+    let baseView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.clear
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOffset = CGSize(width: 3, height: 3)
+        view.layer.shadowOpacity = 0.7
+        view.layer.shadowRadius = 4.0
+        view.clipsToBounds = false
+        view.layer.masksToBounds = false
+        return view
+    }()
+
+    let containerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.layer.cornerRadius = Constants.cellCornerRadius
+        
+        return view
+    }()
+
     lazy var circle: TotalCircle = {
-        let c = TotalCircle(frame: .init(x: 0, y: 0, width: 200, height: 200), categories: categories)
+        let c = TotalCircle(frame: .init(x: 0, y: 0, width: 100, height: 100), categories: categories)
         return c
     }()
 
 
-    let sowEntryButton: UIButton = {
-        let button = UIButton(type: .system)
+    let sowEntryButton: CustomButton = {
+        let button = CustomButton(type: .system)
         button.setTitle("Gilt / Sow Entry", for: .normal)
         button.tintColor = Constants.buttonGrayColor
         button.setImage(#imageLiteral(resourceName: "female"), for: .normal)
-        button.layer.borderWidth = 1
-        button.layer.borderColor = Constants.buttonGrayColor.cgColor
         button.centerTextAndImage(spacing: 10)
-        
+
+
         return button
     }()
 
-    let boarEntryButton: UIButton = {
-        let button = UIButton(type: .system)
+    let boarEntryButton: CustomButton = {
+        let button = CustomButton(type: .system)
         button.setTitle("Boar Entry", for: .normal)
         button.setImage(#imageLiteral(resourceName: "male"), for: .normal)
         button.tintColor = Constants.buttonGrayColor
-        button.layer.borderWidth = 1
-        button.layer.borderColor = Constants.buttonGrayColor.cgColor
         button.centerTextAndImage(spacing: 10)
 
         return button
@@ -79,16 +104,20 @@ class InventoryHeader: UICollectionViewCell {
     let totalLabel: UILabel = {
         let label = UILabel()
         label.text = "Total Sows: "
+        label.textColor = .black
         label.font = Constants.inventoryCellPercentFont
         label.textAlignment = .center
+        label.sizeToFit()
         return label
     }()
 
     let totalNumberLabel: UILabel = {
         let label = UILabel()
         label.text = "693"
+        label.textColor = .black
         label.font = Constants.totalNumberLabelFont
         label.textAlignment = .center
+        label.sizeToFit()
         return label
     }()
 }

@@ -50,7 +50,7 @@ class CreateSowController: UIViewController {
         containerView.addSubview(sowNameTextField)
         containerView.addSubview(entryDateTextField)
         containerView.addSubview(segmentControl)
-        containerView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 60, left: 0, bottom: 0, right: 0))
+        containerView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 0))
         containerView.constraintHeight(constant: 600)
         sowNameTextField.anchor(top: containerView.topAnchor, leading: containerView.leadingAnchor, bottom: nil, trailing: containerView.trailingAnchor, padding: .init(top: 70, left: 20, bottom: 0, right: 10), size: .init(width: 0, height: 50))
         entryDateTextField.anchor(top: sowNameTextField.bottomAnchor, leading: containerView.leadingAnchor, bottom: nil, trailing: containerView.trailingAnchor, padding: .init(top: 20, left: 20, bottom: 0, right: 10), size: .init(width: 0, height: 50))

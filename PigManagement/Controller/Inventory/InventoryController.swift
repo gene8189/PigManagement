@@ -21,8 +21,12 @@ class InventoryController: UICollectionViewController, UICollectionViewDelegateF
 
     init() {
         let layout = UICollectionViewFlowLayout()
-            layout.sectionHeadersPinToVisibleBounds = true
             super.init(collectionViewLayout: layout)
+        navigationController?.isNavigationBarHidden = true
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = true
     }
 
     required init?(coder: NSCoder) {
@@ -46,21 +50,9 @@ class InventoryController: UICollectionViewController, UICollectionViewDelegateF
         collectionView.showsVerticalScrollIndicator = false
         collectionView.register(InventoryCell.self, forCellWithReuseIdentifier: Constants.cellID)
         collectionView.register(InventoryHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Constants.headerID)
-        setupNavBar()
     }
-
-    func setupNavBar() {
-        navigationItem.title = "Sow Inventory"
-        let navBarAppearance = UINavigationBarAppearance()
-        navBarAppearance.titleTextAttributes = [NSAttributedString.Key.font: Constants.navBarFont]
-        navigationController?.navigationBar.standardAppearance = navBarAppearance
-        navigationController?.navigationBar.compactAppearance = navBarAppearance
-        navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
-    }
-
-
-
 }
+
 
 //MARKS - Collection view
 extension InventoryController {
@@ -101,11 +93,12 @@ extension InventoryController {
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: Constants.inventoryCellHeight )
+        return CGSize(width: view.frame.width - 20, height: 80 )
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: view.frame.width, height: Constants.inventoryHeaderHeight)
+        let headerHeight = (view.frame.height - tabBarHeight) * 0.4
+        return CGSize(width: view.frame.width, height: headerHeight)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -116,5 +109,9 @@ extension InventoryController {
             return (view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0.0) +
                 (self.navigationController?.navigationBar.frame.height ?? 0.0)
         }
+
+    var tabBarHeight: CGFloat {
+        return self.tabBarController?.tabBar.frame.size.height ?? 0.0
+    }
 
 }

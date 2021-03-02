@@ -9,22 +9,35 @@ import UIKit
 
 
 extension UIViewController {
-    func configureNavigationBar(preferredLargeSize: Bool, title: String, titleColor: UIColor, tintColor: UIColor, backgroundColor: UIColor) {
-        navigationController?.navigationBar.prefersLargeTitles = preferredLargeSize
+    func configureNavigationBar(navController: UINavigationController, preferredLargeSize: Bool, title: String, titleColor: UIColor, tintColor: UIColor, backgroundColor: UIColor, imageName: String) {
+        navController.navigationBar.prefersLargeTitles = preferredLargeSize
         navigationItem.title = title
-        navigationController?.navigationBar.tintColor = tintColor
+        navController.tabBarItem.title = title
+        navController.tabBarItem.image = UIImage(named: imageName)
+        navController.navigationBar.tintColor = tintColor
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: titleColor]
         navBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: titleColor]
         navBarAppearance.backgroundColor = backgroundColor
-        navigationController?.navigationBar.compactAppearance = navBarAppearance
-        navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
-        navigationController?.navigationBar.standardAppearance = navBarAppearance
+        navController.navigationBar.compactAppearance = navBarAppearance
+        navController.navigationBar.scrollEdgeAppearance = navBarAppearance
+        navController.navigationBar.standardAppearance = navBarAppearance
+
     }
 }
 
 
 extension UIColor {
+
+    func as1ptImage() -> UIImage {
+           UIGraphicsBeginImageContext(CGSize(width: 10, height: 10))
+           self.setFill()
+        UIGraphicsGetCurrentContext()?.fill(.init(x: 0, y: 0, width: 10, height: 10))
+           let image = UIGraphicsGetImageFromCurrentImageContext() ?? UIImage()
+           UIGraphicsEndImageContext()
+           return image
+       }
+
     static let darkBlue = UIColor(red: 9/255, green: 45/255, blue: 64/255, alpha: 1)
     convenience init(hexString: String) {
         let hex = hexString.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
@@ -46,11 +59,6 @@ extension UIColor {
 
 }
 
-class CustomNavigationController: UINavigationController {
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-}
 
 extension UIView {
     @discardableResult
@@ -155,6 +163,7 @@ struct AnchoredConstraints {
 }
 
 
+
 class IndentedLabel: UILabel {
 
     override func drawText(in rect: CGRect) {
@@ -177,15 +186,13 @@ extension UIButton {
 
 
 extension UIView {
-
-   func dropShadow() {
-       layer.masksToBounds = false
-       layer.shadowColor = UIColor.black.cgColor
-       layer.shadowOpacity = 0.5
-       layer.shadowOffset = CGSize(width: -1, height: 1)
-       layer.shadowRadius = 1
-       layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
-       layer.shouldRasterize = true
-       layer.rasterizationScale = UIScreen.main.scale
-   }
+    func drawShadow(shadowColor: UIColor = UIColor.black, opacity: Float =
+                        0.5, offset: CGSize, radius: CGFloat = 5, shouldRasterize : Bool = false) {
+        self.clipsToBounds = false
+        self.layer.masksToBounds = false
+            self.layer.shadowColor = shadowColor.cgColor
+            self.layer.shadowOpacity = opacity
+            self.layer.shadowOffset = offset
+            self.layer.shouldRasterize = shouldRasterize
+        }
 }

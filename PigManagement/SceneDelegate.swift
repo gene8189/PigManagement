@@ -15,8 +15,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            let navController = CustomNavigationController(rootViewController: InventoryController())
-            window.rootViewController = navController
+            let tabBarController = MainTabBarController()
+            tabBarController.tabBar.tintColor = .black
+            UITabBar.appearance().barTintColor = .white
+            window.rootViewController = tabBarController
+
             self.window = window
             window.makeKeyAndVisible()
         }
