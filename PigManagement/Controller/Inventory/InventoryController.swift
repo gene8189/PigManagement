@@ -13,6 +13,7 @@ enum Stages: String, CaseIterable {
     case lactating
     case others
     case weaned
+    case boar
 
 }
 
@@ -48,7 +49,7 @@ class InventoryController: UICollectionViewController, UICollectionViewDelegateF
         Categories(title: "Weaned", number: "30", percentage: 4, color: Constants.weanedColor),
         Categories(title: "Open", number: "10", percentage: 3, color: Constants.openColor),
         Categories(title: "Others", number: "5", percentage: 1, color: Constants.othersColor),
-        
+        Categories(title: "Boars", number: "20", percentage: 0, color: Constants.createBoarColor)
         ]
 
 
@@ -62,6 +63,10 @@ class InventoryController: UICollectionViewController, UICollectionViewDelegateF
         collectionView.register(InventoryCell.self, forCellWithReuseIdentifier: Constants.cellID)
         collectionView.register(InventoryHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Constants.headerID)
 
+    }
+
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
 }
 

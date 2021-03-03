@@ -196,3 +196,12 @@ extension UIView {
             self.layer.shouldRasterize = shouldRasterize
         }
 }
+
+
+extension UIStackView {
+    convenience init(arrangedSubviews: [UIView], spacing: CGFloat, axis: NSLayoutConstraint.Axis) {
+        self.init(arrangedSubviews: arrangedSubviews)
+        self.spacing = spacing
+        self.axis = axis
+    }
+}

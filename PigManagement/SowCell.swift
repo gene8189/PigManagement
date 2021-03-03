@@ -28,6 +28,7 @@ class SowCell: UITableViewCell {
         case .lactating: circle.backgroundColor = Constants.lactatingColor
         case .others: circle.backgroundColor = Constants.othersColor
         case .weaned: break
+        case .boar: break
             
 
         }

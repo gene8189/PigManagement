@@ -11,15 +11,24 @@ class InventoryCell: BaseCell {
 
     var category: Categories! {
         didSet {
+            setupCell(category: category)
+        }
+    }
+
+    func setupCell(category: Categories) {
+        if category.title != "Boars" {
+        categoryColorView.backgroundColor = category.color
+        titleLabel.text = category.title
+        titleLabel.textColor = category.color
+        numberLabel.text = category.number
+        percentageLabel.text = "\(category.percentage) %"
+        circle.percentage = category.percentage
+        circle.progressClr = category.color
+        } else {
             categoryColorView.backgroundColor = category.color
             titleLabel.text = category.title
             titleLabel.textColor = category.color
             numberLabel.text = category.number
-            percentageLabel.text = "\(category.percentage) %"
-            circle.percentage = category.percentage
-            circle.progressClr = category.color
-
-
         }
     }
 

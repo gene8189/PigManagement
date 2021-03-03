@@ -14,6 +14,11 @@ class InventoryHeader: UICollectionViewCell {
     var circleHeight: CGFloat {
         return (self.frame.height * 2 / 3 - 50)
     }
+
+    var totalSowsNumber = [Sow]()
+
+
+    // need to calculate the capacity !!
     var categories: [Categories] = [
                                     Categories(title: "Gestating", number: "525", percentage: 80, color: Constants.gestatingColor),
                                     Categories(title: "Lactating", number: "183", percentage: 12, color: Constants.lactatingColor),
@@ -47,7 +52,11 @@ class InventoryHeader: UICollectionViewCell {
         buttonStack.anchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, padding: .init(top: 0, left: 10, bottom: 10, right: 10))
         buttonStack.constraintHeight(constant: 40)
 
+        let labelStacks = UIStackView(arrangedSubviews: [UIStackView(arrangedSubviews: [maxQuotaLabel, maxQuotaLabelNumber], spacing: 10, axis: .horizontal), UIStackView(arrangedSubviews: [currentQuota, currentQuotaNumberLabel], spacing: 10, axis: .horizontal), UIStackView(arrangedSubviews: [capacityLabel, capacityNumberLabel], spacing: 10, axis: .horizontal)], spacing: 10, axis: .vertical)
+        labelStacks.distribution = .fillEqually
+        labelStacks.anchor(top: containerView.topAnchor, leading: circle.trailingAnchor, bottom: containerView.bottomAnchor, trailing: containerView.trailingAnchor, padding: .init(top: 10, left: 10, bottom: 10, right: 10))
 
+        
 
 
     }
@@ -106,9 +115,9 @@ class InventoryHeader: UICollectionViewCell {
 
     let totalLabel: UILabel = {
         let label = UILabel()
-        label.text = "Total Sows: "
+        label.text = "Summary: "
         label.textColor = .black
-        label.font = Constants.inventoryCellPercentFont
+        label.font = Constants.inventoryCellNumberFont
         label.textAlignment = .center
         label.sizeToFit()
         return label
@@ -116,10 +125,65 @@ class InventoryHeader: UICollectionViewCell {
 
     let totalNumberLabel: UILabel = {
         let label = UILabel()
-        label.text = "693"
+        label.text = "100 % \n\n Capacity"
         label.textColor = .black
-        label.font = Constants.totalNumberLabelFont
+        label.font = Constants.inventoryCellPercentFont
         label.textAlignment = .center
+        label.numberOfLines = 3
+        label.sizeToFit()
+        return label
+    }()
+
+    let maxQuotaLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Max. Quota: "
+        label.textColor = .black
+        label.font = Constants.inventoryCellNumberFont
+        label.sizeToFit()
+        return label
+    }()
+
+    let maxQuotaLabelNumber: UILabel = {
+        let label = UILabel()
+        label.text = "683"
+        label.textColor = .black
+        label.font = Constants.inventoryCellNumberFont
+        label.sizeToFit()
+        return label
+    }()
+
+    let currentQuota: UILabel = {
+        let label = UILabel()
+        label.text = "Current Quota :"
+        label.textColor = .black
+        label.font = Constants.inventoryCellNumberFont
+        label.sizeToFit()
+        return label
+    }()
+
+    let currentQuotaNumberLabel: UILabel = {
+        let label = UILabel()
+        label.text = "666"
+        label.textColor = .black
+        label.font = Constants.inventoryCellNumberFont
+        label.sizeToFit()
+        return label
+    }()
+
+    let capacityLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Capacity :"
+        label.textColor = .black
+        label.font = Constants.inventoryCellNumberFont
+        label.sizeToFit()
+        return label
+    }()
+
+    let capacityNumberLabel: UILabel = {
+        let label = UILabel()
+        label.text = "100 %"
+        label.textColor = .black
+        label.font = Constants.inventoryCellNumberFont
         label.sizeToFit()
         return label
     }()

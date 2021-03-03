@@ -32,7 +32,7 @@ struct Constants {
     static let openColor = UIColor(hexString: "B21E35")
     static let lactatingColor = UIColor(hexString: "FF5400")
     static let othersColor = UIColor(hexString: "3C096C")
-    static let weanedColor = UIColor(hexString: "00B4D8")
+    static let weanedColor = UIColor(hexString: "ffaa00")
     static let giltColor = UIColor(hexString: "E600C3")
     static let grayColor = UIColor(hexString: "dee2e6")
     static let buttonGrayColor = UIColor(hexString: "6C757D")
