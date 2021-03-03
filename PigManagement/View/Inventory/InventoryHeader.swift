@@ -17,8 +17,11 @@ class InventoryHeader: UICollectionViewCell {
 
     var totalSowsNumber = [Sow]()
 
+    // remove capacity 100%
+    // maybe number of gilts instead???
+    //so max quota and current quota and number of gilts
+    //label set to number of line = 0 and fix the width
 
-    // need to calculate the capacity !!
     var categories: [Categories] = [
                                     Categories(title: "Gestating", number: "525", percentage: 80, color: Constants.gestatingColor),
                                     Categories(title: "Lactating", number: "183", percentage: 12, color: Constants.lactatingColor),
@@ -52,9 +55,21 @@ class InventoryHeader: UICollectionViewCell {
         buttonStack.anchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, padding: .init(top: 0, left: 10, bottom: 10, right: 10))
         buttonStack.constraintHeight(constant: 40)
 
-        let labelStacks = UIStackView(arrangedSubviews: [UIStackView(arrangedSubviews: [maxQuotaLabel, maxQuotaLabelNumber], spacing: 10, axis: .horizontal), UIStackView(arrangedSubviews: [currentQuota, currentQuotaNumberLabel], spacing: 10, axis: .horizontal), UIStackView(arrangedSubviews: [capacityLabel, capacityNumberLabel], spacing: 10, axis: .horizontal)], spacing: 10, axis: .vertical)
-        labelStacks.distribution = .fillEqually
-        labelStacks.anchor(top: containerView.topAnchor, leading: circle.trailingAnchor, bottom: containerView.bottomAnchor, trailing: containerView.trailingAnchor, padding: .init(top: 10, left: 10, bottom: 10, right: 10))
+
+        let maxQuoteStack = UIStackView(arrangedSubviews: [maxQuotaLabel, maxQuotaLabelNumber], axis: .vertical)
+        maxQuoteStack.distribution = .fillEqually
+
+        let currentQuotaStack = UIStackView(arrangedSubviews: [currentQuota, currentQuotaNumberLabel], axis: .vertical)
+        currentQuotaStack.distribution = .fillEqually
+
+        let capacityStack = UIStackView(arrangedSubviews: [giltsLabel, giltsNoLabel], axis: .vertical)
+        capacityStack.distribution = .fillEqually
+        let labelStacks = UIStackView(arrangedSubviews: [maxQuoteStack,currentQuotaStack , capacityStack], axis: .vertical)
+        labelStacks.distribution = .fillProportionally
+        labelStacks.alignment = .center
+
+        containerView.addSubview(labelStacks)
+        labelStacks.anchor(top: containerView.topAnchor, leading: circle.trailingAnchor, bottom: containerView.bottomAnchor, trailing: containerView.trailingAnchor, padding: .init(top: 10, left: 20, bottom: 10, right: 10))
 
         
 
@@ -125,21 +140,21 @@ class InventoryHeader: UICollectionViewCell {
 
     let totalNumberLabel: UILabel = {
         let label = UILabel()
-        label.text = "100 % \n\n Capacity"
+        label.text = "100 % \n Capacity"
         label.textColor = .black
         label.font = Constants.inventoryCellPercentFont
         label.textAlignment = .center
-        label.numberOfLines = 3
+        label.numberOfLines = 2
         label.sizeToFit()
         return label
     }()
 
     let maxQuotaLabel: UILabel = {
         let label = UILabel()
-        label.text = "Max. Quota: "
+        label.text = "Max. Quota :"
         label.textColor = .black
         label.font = Constants.inventoryCellNumberFont
-        label.sizeToFit()
+        label.numberOfLines = 2
         return label
     }()
 
@@ -147,6 +162,7 @@ class InventoryHeader: UICollectionViewCell {
         let label = UILabel()
         label.text = "683"
         label.textColor = .black
+        label.textAlignment = .center
         label.font = Constants.inventoryCellNumberFont
         label.sizeToFit()
         return label
@@ -154,10 +170,10 @@ class InventoryHeader: UICollectionViewCell {
 
     let currentQuota: UILabel = {
         let label = UILabel()
-        label.text = "Current Quota :"
+        label.text = "Curr. Quota :"
         label.textColor = .black
         label.font = Constants.inventoryCellNumberFont
-        label.sizeToFit()
+        label.numberOfLines = 2
         return label
     }()
 
@@ -165,23 +181,25 @@ class InventoryHeader: UICollectionViewCell {
         let label = UILabel()
         label.text = "666"
         label.textColor = .black
+        label.textAlignment = .center
         label.font = Constants.inventoryCellNumberFont
         label.sizeToFit()
         return label
     }()
 
-    let capacityLabel: UILabel = {
+    let giltsLabel: UILabel = {
         let label = UILabel()
-        label.text = "Capacity :"
+        label.text = "No. of gilts :"
         label.textColor = .black
         label.font = Constants.inventoryCellNumberFont
-        label.sizeToFit()
+        label.numberOfLines = 2
         return label
     }()
 
-    let capacityNumberLabel: UILabel = {
+    let giltsNoLabel: UILabel = {
         let label = UILabel()
-        label.text = "100 %"
+        label.text = "60"
+        label.textAlignment = .center
         label.textColor = .black
         label.font = Constants.inventoryCellNumberFont
         label.sizeToFit()

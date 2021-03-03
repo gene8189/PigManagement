@@ -199,9 +199,11 @@ extension UIView {
 
 
 extension UIStackView {
-    convenience init(arrangedSubviews: [UIView], spacing: CGFloat, axis: NSLayoutConstraint.Axis) {
+    convenience init(arrangedSubviews: [UIView], spacing: CGFloat = 0, axis: NSLayoutConstraint.Axis) {
         self.init(arrangedSubviews: arrangedSubviews)
-        self.spacing = spacing
+        if spacing != 0 {
+            self.spacing = spacing
+        }
         self.axis = axis
     }
 }

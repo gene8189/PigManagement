@@ -34,11 +34,6 @@ class InventoryController: UICollectionViewController, UICollectionViewDelegateF
         navigationController?.isNavigationBarHidden = true
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.isNavigationBarHidden = true
-    }
-
-
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -114,7 +109,7 @@ extension InventoryController {
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        let headerHeight = (view.frame.height - tabBarHeight) * 0.4
+        let headerHeight = (view.frame.height - topbarHeight - tabBarHeight) * 0.4
         return CGSize(width: view.frame.width, height: headerHeight)
     }
 
